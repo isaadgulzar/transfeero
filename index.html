@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfeero</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Slick Slider CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="./stylesheet.css">
+</head>
+<body>
+    <header class="max-w-7xl mx-auto bg-white shadow">
+        <div class="w-fulllg:divide-y lg:divide-gray-200">
+            <div class="relative px-2 sm:px-4 lg:px-8 flex justify-end items-center py-4">
+                <div class="flex">
+                    <button class="flex text-red bg-white font-bold px-6 py-2 rounded-md">
+                        <svg class="h-5 w-5 text-red mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                        </svg>
+                        <span>
+                            Sign in
+                        </span>
+                    </button>
+                </div>
+                <div class="relative z-10 flex items-center lg:hidden">
+                <!-- Mobile menu button -->
+                <button type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                </div>
+            </div>
+            <nav class="hidden px-2 sm:px-4 lg:px-8 lg:py-2 justify-between md:flex bg-lightGray" aria-label="Global">
+              <div class="flex items-center">
+                <img class="block h-7 w-auto" src="https://www.transfeero.com/wp-content/themes/understrap-master/q.svg">
+                <span class="text-2xl font-bold">TRANSFEERO</span>
+              </div>
+              <div class="md:flex justify-end lg:space-x-8">
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                  Products   
+                </a>
+        
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                    How It Works
+                </a>
+        
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                    Free Estimate
+                </a>
+        
+                <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                    Back to w
+                </a>
+              </div>
+            </nav>
+        </div>
+    
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <nav class="lg:hidden px-2 sm:px-4 lg:px-8 lg:py-2 justify-end md:flex lg:space-x-8 bg-lightGray" aria-label="Global">
+            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                Products   
+            </a>
+    
+            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                How It Works
+            </a>
+    
+            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                Free Estimate
+            </a>
+    
+            <a href="#" class="text-gray-800 py-2 px-3 inline-flex items-center text-xl font-semibold">
+                Back to w
+            </a>
+        </nav>
+    </header>
+
+    <!-- Slider  -->
+    <div id="main" class="max-w-7xl relative flex items-center justify-center mx-auto"
+      x-data="booking()"
+    >
+       <div class="flex flex-col md:flex-row items-center shadow-xl rounded-md bg-gray-100 p-5">
+        <fieldset class="w-full md:w-auto px-2 py-1 rounded-md">
+          <div class="bg-white relative flex flex-col">
+            <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+            :class="{'rounded-md' : departureStartTyping === false}"
+            >
+              <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
+                <svg class="h-4 w-4" data-prefix="fas" data-icon="plane-arrival" class="svg-inline--fa fa-plane-arrival fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                  <path fill="currentColor" d="M624 448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h608c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM44.81 205.66l88.74 80a62.607 62.607 0 0 0 25.47 13.93l287.6 78.35c26.48 7.21 54.56 8.72 81 1.36 29.67-8.27 43.44-21.21 47.25-35.71 3.83-14.5-1.73-32.71-23.37-54.96-19.28-19.82-44.35-32.79-70.83-40l-97.51-26.56L282.8 30.22c-1.51-5.81-5.95-10.35-11.66-11.91L206.05.58c-10.56-2.88-20.9 5.32-20.71 16.44l47.92 164.21-102.2-27.84-27.59-67.88c-1.93-4.89-6.01-8.57-11.02-9.93L52.72 64.75c-10.34-2.82-20.53 5-20.72 15.88l.23 101.78c.19 8.91 6.03 17.34 12.58 23.25z"></path>
+                </svg>
+                <span>
+                  Arrival Airport <span class="text-xs">Port, train Station</span>
+                </span>
+              </label>
+              <input @input.focus="checkInput($event)" @click="{departureStartTyping = true}" @click.away="inputFocus()" type="text" name="departureInput" id="departureInput" class="w-full focus:outline-none bg-white" placeholder="Select an airport">
+            </div>
+            <div class="absolute top-12 w-full rounded-b-md border-black" 
+              :class="{'border border-t' : departureStartTyping === true}"
+            >
+              <ul x-show="departureStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
+                <li class="text-xs text-gray-900 select-none relative py-0.5 px-2" id="listbox-option-0" role="option">
+                  <span class="inline-block text-xs">Start Typing...</span>
+                </li>
+              </ul>
+              <ul x-show="departureBlock" class="w-full bg-white rounded-b-md text-base divide-y focus:outline-none border border-black" :class="{'border-t-0' : departureBlock === true}" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-0" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>New York JFK Airport</strong>
+                      (JFK), New York, United States
+                    </span>
+                  </span>
+                </li>
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-1" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>Dubai Airport</strong>
+                      (DXB), Dubai, United Arab Emirats
+                    </span>
+                  </span>
+                </li>
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-2" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>Sialkot Airport</strong>
+                      (SKT), Sialkot, Pakistan
+                    </span>
+                  </span>
+                </li>
+                <!-- More items... -->
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="w-full md:w-auto px-2 py-1 rounded-md">
+          <div class="bg-white relative flex flex-col">
+            <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+            :class="{'rounded-md' : departureStartTyping === false}"
+            >
+              <label for="arrivalInput" class="flex items-center gap-x-1 text-sm text-black">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                </svg>
+                <span>Going to </span>
+              </label>
+              <input @input.focus="checkInput($event)" @click="{departureStartTyping = true}" @click.away="inputFocus()" type="text" name="arrivalInput" id="arrivalInput" class="w-full focus:outline-none bg-white" placeholder="Enter an address or hotel name...">
+            </div>
+            <div class="absolute top-12 w-full rounded-b-md border-black" 
+              :class="{'border border-t' : departureStartTyping === true}"
+            >
+              <ul x-show="departureStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
+                <li class="text-xs text-gray-900 select-none relative py-0.5 px-2" id="listbox-option-0" role="option">
+                  <span class="inline-block text-xs">Start Typing...</span>
+                </li>
+              </ul>
+              <ul x-show="departureBlock" class="w-full bg-white rounded-b-md text-base divide-y focus:outline-none border border-black" :class="{'border-t-0' : departureBlock === true}" tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-option-3">
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-0" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>New York JFK Airport</strong>
+                      (JFK), New York, United States
+                    </span>
+                  </span>
+                </li>
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-1" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>Dubai Airport</strong>
+                      (DXB), Dubai, United Arab Emirats
+                    </span>
+                  </span>
+                </li>
+                <li class="text-xs text-gray-900 cursor-pointer select-none hover:bg-gray-200 relative py-2 px-2" id="listbox-option-2" role="option">
+                  <span class="flex items-center gap-x-2 text-xs">
+                    <span>
+                      <svg class="inline-block -mt-0.5 h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                      </svg>
+                      <strong>Sialkot Airport</strong>
+                      (SKT), Sialkot, Pakistan
+                    </span>
+                  </span>
+                </li>
+                <!-- More items... -->
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+        <div class="w-full md:w-auto px-2 py-1 rounded-md">
+          <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
+            <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>Pickup Date </span>
+            </label>
+            <input type="datetime-local" value="2018-06-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+          </div>
+        </div>
+        <div class="w-full md:w-auto px-2 py-1 rounded-md">
+          <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
+            <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
+              <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>Add a Return <span class="text-xs">(optional)</span> </span>
+            </label>
+            <input type="datetime-local" value="2018-07-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+          </div>
+        </div>
+        <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md cursor-pointer" @click="members = true">
+          <div class="bg-white relative flex flex-col">
+            <div class="flex flex-col gap-y-1.5 w-full px-3 border rounded-md border-black">
+              <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span class="lg:hidden">passengers</span>
+              </label>
+              <span class="block mb-0.5" x-text="totalMemberCounter">22</span>
+            </div>
+            <div x-show="members" class="absolute z-10 w-52 right-0 top-14 rounded-md border border-black">
+              <ul class="w-full bg-white rounded-md text-base divide-y focus:outline-none">
+                <li class="text-xs text-gray-900 relative py-2 px-2">
+                  <div class="flex items-center justify-between">
+                    <p class="flex flex-col">
+                      <span class="text-sm tact-black">Adults</span>
+                      <span class="text-xs text-gray-500">+12 years</span>
+                    </p>
+                    <div class="flex items-center gap-x-2">
+                      <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+                        </svg>
+                      </button>
+                      <span class="text-lg" x-text="counter">1</span>
+                      <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="text-xs text-gray-900 relative py-2 px-2">
+                  <div class="flex items-center justify-between">
+                    <p class="flex flex-col">
+                      <span class="text-sm tact-black">Children</span>
+                      <span class="text-xs text-gray-500">2-12 years</span>
+                    </p>
+                    <div class="flex items-center gap-x-2">
+                      <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+                        </svg>
+                      </button>
+                      <span class="text-lg" x-text="counter">1</span>
+                      <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="text-xs text-gray-900 relative py-2 px-2">
+                  <div class="flex items-center justify-between">
+                    <p class="flex flex-col">
+                      <span class="text-sm tact-black">Infants</span>
+                      <span class="text-xs text-gray-500">0-2 years</span>
+                    </p>
+                    <div class="flex items-center gap-x-2">
+                      <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
+                        </svg>
+                      </button>
+                      <span class="text-lg" x-text="counter">1</span>
+                      <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex relative py-2 px-2">
+                  <button @click.stop="members = false" class="w-full bg-orange hover:bg-yellow-500 px-4 rounded-full focus:outline-none">
+                    Confirm
+                  </button>
+                </li>
+                <!-- More items... -->
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+        <div class="w-full lg:w-auto px-2 py-1 rounded-md">
+          <button class="flex items-center justify-center gap-x-1 w-full h-12 bg-orange hover:bg-yellow-500 px-4 rounded-md focus:outline-none">
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <span class="uppercase">Search</span>
+          </button>
+        </div>
+       </div>
+    </div>
+    <!-- Services -->
+    <div class="max-w-7xl relative mx-5 lg:mx-10 2xl:mx-auto">
+      <div class="py-12 bg-white">
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <dl class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-12">
+            <div class="text-center">
+              <dt>
+                <div class="flex items-center justify-center mx-auto h-20 w-20 rounded-full border-2 border-gray-800 text-white">
+                  <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/shield.svg" alt="">
+                </div>
+                <p class="mt-5 text-lg leading-6 font-medium text-gray-900">ALL-INCLUSIVE RATES</p>
+              </dt>
+              <dd class="mt-2 text-base text-gray-500">
+                Confirmed all-inclusive rates, without hidden fees.
+              </dd>
+            </div>
+            <div class="text-center">
+              <dt>
+                <div class="flex items-center justify-center mx-auto h-20 w-20 rounded-full border-2 border-gray-800 text-white">
+                  <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/virus.svg" alt="">
+                </div>
+                <p class="mt-5 text-lg leading-6 font-medium text-gray-900">SAFE AND SECURE TRAVEL</p>
+              </dt>
+              <dd class="mt-2 text-base text-gray-500">
+                Our drivers regularly sanitize vehicles, wear masks and comply with all local laws.
+              </dd>
+            </div>
+            <div class="text-center">
+              <dt>
+                <div class="flex items-center justify-center mx-auto h-20 w-20 rounded-full border-2 border-gray-800 text-white">
+                  <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/professional_drivers.svg" alt="">
+                </div>
+                <p class="mt-5 text-lg leading-6 font-medium text-gray-900">PROFESSIONAL DRIVERS</p>
+              </dt>
+              <dd class="mt-2 text-base text-gray-500">
+                Reach your destination safely and relaxed with a licensed, insured and professional chauffeur.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+    <!-- Apply For FINANCING  -->
+    <div class="max-w-7xl overflow-hidden relative mx-5 lg:mx-10 pt-12 pb-10 2xl:mx-auto">
+      <div class="relative mt-14 justify-center items-center">
+        <div class="mx-auto max-h-96">
+          <img class="w-full" src="https://www.transfeero.com/wp-content/uploads/2020/04/foto_transfeero_fina-opti.jpg" alt="">
+        </div>
+        <!-- Text Section -->
+        <div style="background-color:#232323;" class="absolute top-16 left-10 w-80 border-b-4 border-orange md:opacity-90 overflow-hidden py-8 lg:px-10">
+            <h1 class="text-3xl text-white font-light mb-3">
+                <span>
+                  Reliability, worldwide <img class="inline-block h-7 w-auto" src="https://www.transfeero.com/wp-content/themes/understrap-master/q.svg">
+                </span>
+            </h1>
+            <ul class="flex items-center gap-x-1 text-sm text-white">
+              <li>Affordable</li>
+              <li class="flex items-center gap-x-1">
+                <svg class="h-4 w-4 text-white" data-prefix="far" data-icon="dot-circle" class="svg-inline--fa fa-dot-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
+                </svg>
+                <span>Punctual</span>
+              </li>
+              <li class="flex items-center gap-x-1">
+                <svg class="h-4 w-4 text-white" data-prefix="far" data-icon="dot-circle" class="svg-inline--fa fa-dot-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
+                </svg>
+                <span>Professional</span>
+              </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Reviews  -->
+    <div class="max-w-7xl relative mx-5 lg:mx-20 2xl:mx-auto py-20">
+      <div class="max-w-7xl grid grid-cols-3 mx-auto">
+        <div class="col-span-1 flex flex-col gap-y-1 justify-center items-center">
+          <span class="text-2xl font-light text-black">Excellent</span>
+          <ul class="flex flex-row">
+            <li>
+                <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </li>
+            <li>
+                <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </li>
+            <li>
+                <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </li>
+            <li>
+                <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </li>
+            <li>
+                <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+            </li>
+          </ul>
+          <div class="bg-gray-200 rounded-md p-1 mt-3">
+            <img src="https://assets.reviews.io/img/all-global-assets/logo/reviewsio-logo.svg" style="height: 18px; width: 112px; vertical-align:middle;">
+          </div>
+        </div>
+        <div class="col-span-2 autoplay">
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="border text-center px-6 py-3">
+            <div class="flex flex-col gap-y-2">
+              <a href="#" class="text-lg font-bold font-medium">John Smith</a>
+              <ul class="flex flex-row justify-center">
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+                <li>
+                    <svg class="h-6 w-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                    </svg>
+                </li>
+              </ul>
+              <p class="text-xs">
+                Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry’s
+                standard dummy text ever since the
+                1500s, when an unknown printer took
+                a galley of type. 
+              </p>
+              <p class="flex justify-center my-1">
+                <span>
+                  <svg class="h-5 w-5" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4"/><path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853"/><path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05"/><path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335"/>
+                  </svg>
+                </span>
+                <span class="text-xs text-gray-400 ml-2">
+                  1 week ago
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Shop  -->
+    <div class="max-w-7xl overflow-hidden relative 2xl:mx-auto bg-lightGray py-20 mt-20">
+      <div class="mx-5 lg:mx-10">
+        <h1 class="text-lg text-center md:text-2xl font-bold text-black opacity-80">
+          <span>
+            Maximum comfort and safety for your trip
+          </span>
+        </h1>
+        <p class="text-sm text-center font-medium text-black opacity-60">
+          Licensed vehicles, professional drivers
+        </p>
+        <div class="relative mt-14 justify-center items-center">
+          <ul class="gap-y-4 gap-x-4 md:gap-y-7 md:gap-x-10 xl:gap-x-7 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/mainjs/img/economy.png" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">Economy Taxi</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 25.00</span></p>
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/mainjs/img/standard.png" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">Standard Class</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 32.00</span></p>
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/mainjs/img/firstclass.png" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">First Class</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 60.00</span></p>
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/mainjs/img/standard_van.png" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">Van Standard</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 45.00</span></p>
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/mainjs/img/first_van.png" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">Van First Class</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 75.00</span></p>
+                  </div>
+              </div>
+            </li>
+            <li>
+              <div class="bg-white rounded-none shadow-md py-3 px-3">
+                  <div class="relative">
+                      <img class="h-24 mx-auto" src="https://www.transfeero.com/wp-content/uploads/2020/05/sprinter.jpg" alt="image">
+                  </div>
+                  <div class="space-y-1 text-center">
+                    <h1 class="font-semibold sm:text-base">Mini Bus</h1>
+                    <p class="text-sm font-medium">From<span class="ml-3 text-orange">€ 90.00</span></p>
+                  </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+      </div>
+    </div>
+    <!-- customers are saying -->
+    <div class="max-w-7xl relative 2xl:mx-auto bg-gray-100 pt-12 pb-20">
+      <div class="mx-5 lg:mx-10">
+        <h1 class="text-3xl text-center md:text-5xl font-bold text-black opacity-80 mb-16">
+          <span>
+            Here’s what our customers are saying
+          </span>
+        </h1>
+        <div class="lg:pb-0 lg:z-10 lg:relative">
+          <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8">
+            <div class="lg:col-span-1 bg-white">
+              <div class="hero__title" id="animatedHeading">
+                <div class="slick-dupe">
+                  <div class="relative mx-5 p-2 bg-gray-100">
+                    <div class="flex justify-between">
+                      <div class="flex items-center gap-x-3">
+                        <div class="flex -space-x-0.5 items-center">
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                        </div>
+                        <span class="flex gap-x-1.5">
+                          <svg class="h-4 w-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                          <span class="text-xs text-green-500">Verified customer</span>
+                        </span>
+                      </div>
+                      <span class="flex gap-x-0.5 items-center">
+                        <span>
+                          <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                        <span class="text-xs"> 2 days ago</span>
+                      </span>
+                    </div>
+                    <div class="flex flex-col gap-y-2">
+                      <p class="text-sm text-gray-500">
+                        We offer you the best price for your high-quality airport transfer with the guarantee of certified drivers.
+                      </p>
+                      <p class="flex gap-x-1.5 items-center text-xs text-gray-500">
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path fill="#fff" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                            </svg>
+                          </span>
+                          <span>Booked a taxi from Hamburg</span>
+                        </span>
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                              <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                            </svg>
+                          </span>
+                          <span>Airport (HAM), Hamburg, Germany</span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="slick-dupe">
+                  <div class="relative mx-5 p-2 bg-gray-100">
+                    <div class="flex justify-between">
+                      <div class="flex items-center gap-x-3">
+                        <div class="flex -space-x-0.5 items-center">
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                        </div>
+                        <span class="flex gap-x-1.5">
+                          <svg class="h-4 w-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                          <span class="text-xs text-green-500">Verified customer</span>
+                        </span>
+                      </div>
+                      <span class="flex gap-x-0.5 items-center">
+                        <span>
+                          <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                        <span class="text-xs"> 3 days ago</span>
+                      </span>
+                    </div>
+                    <div class="flex flex-col gap-y-2">
+                      <p class="text-sm text-gray-500">
+                        Five star service, our driver was a delight, so professional and pleasant and his Mercedes van and our baby chair were immaculate. It was a pleasure to be transferred by you. Many thanks. Emma
+                      </p>
+                      <p class="flex gap-x-1.5 items-center text-xs text-gray-500">
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path fill="#fff" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                            </svg>
+                          </span>
+                          <span>Booked a taxi from Hamburg</span>
+                        </span>
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                              <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                            </svg>
+                          </span>
+                          <span>Airport (HAM), Hamburg, Germany</span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="slick-dupe">
+                  <div class="relative mx-5 p-2 bg-gray-100">
+                    <div class="flex justify-between">
+                      <div class="flex items-center gap-x-3">
+                        <div class="flex -space-x-0.5 items-center">
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                        </div>
+                        <span class="flex gap-x-1.5">
+                          <svg class="h-4 w-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                          <span class="text-xs text-green-500">Verified customer</span>
+                        </span>
+                      </div>
+                      <span class="flex gap-x-0.5 items-center">
+                        <span>
+                          <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                        <span class="text-xs"> 4 days ago</span>
+                      </span>
+                    </div>
+                    <div class="flex flex-col gap-y-2">
+                      <p class="text-sm text-gray-500">
+                        We offer you the best price for your high-quality airport transfer with the guarantee of certified drivers.
+                      </p>
+                      <p class="flex gap-x-1.5 items-center text-xs text-gray-500">
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path fill="#fff" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                            </svg>
+                          </span>
+                          <span>Booked a taxi from Hamburg</span>
+                        </span>
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                              <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                            </svg>
+                          </span>
+                          <span>Airport (HAM), Hamburg, Germany</span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="slick-dupe">
+                  <div class="relative mx-5 p-2 bg-gray-100">
+                    <div class="flex justify-between">
+                      <div class="flex items-center gap-x-3">
+                        <div class="flex -space-x-0.5 items-center">
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                          <svg class="h-6 w-6 md:h-5 md:w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                          </svg>
+                        </div>
+                        <span class="flex gap-x-1.5">
+                          <svg class="h-4 w-4 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                          </svg>
+                          <span class="text-xs text-green-500">Verified customer</span>
+                        </span>
+                      </div>
+                      <span class="flex gap-x-0.5 items-center">
+                        <span>
+                          <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </span>
+                        <span class="text-xs"> 5 days ago</span>
+                      </span>
+                    </div>
+                    <div class="flex flex-col gap-y-2">
+                      <p class="text-sm text-gray-500">
+                        We offer you the best price for your high-quality airport transfer with the guarantee of certified drivers.
+                      </p>
+                      <p class="flex gap-x-1.5 items-center text-xs text-gray-500">
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path fill="#fff" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                            </svg>
+                          </span>
+                          <span>Booked a taxi from Hamburg</span>
+                        </span>
+                        <span class="flex gap-x-0.5 items-center">
+                          <span>
+                            <svg class="h-3 w-3 text-gray-500" data-prefix="fas" data-icon="plane" class="svg-inline--fa fa-plane fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                              <path fill="currentColor" d="M480 192H365.71L260.61 8.06A16.014 16.014 0 0 0 246.71 0h-65.5c-10.63 0-18.3 10.17-15.38 20.39L214.86 192H112l-43.2-57.6c-3.02-4.03-7.77-6.4-12.8-6.4H16.01C5.6 128-2.04 137.78.49 147.88L32 256 .49 364.12C-2.04 374.22 5.6 384 16.01 384H56c5.04 0 9.78-2.37 12.8-6.4L112 320h102.86l-49.03 171.6c-2.92 10.22 4.75 20.4 15.38 20.4h65.5c5.74 0 11.04-3.08 13.89-8.06L365.71 320H480c35.35 0 96-28.65 96-64s-60.65-64-96-64z"></path>
+                            </svg>
+                          </span>
+                          <span>Airport (HAM), Hamburg, Germany</span>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-y-5 px-10 lg:col-span-1">
+              <div class="relative">
+                <div class="flex items-center gap-x-3">
+                  <span>
+                    <svg class="h-6 w-6 text-orange -ml-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <h5 class="font-semibold sm:text-base uppercase">Best value for your Transfer</h5>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  We offer you the best price for your high-quality airport transfer with the guarantee of certified drivers.
+                </p>
+              </div>
+              <div class="relative">
+                <div class="flex items-center gap-x-3">
+                  <span>
+                    <svg class="h-6 w-6 text-orange -ml-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <h5 class="font-semibold sm:text-base uppercase">Meet & greet always included</h5>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  Driver will be waiting for you with a sign or a tablet showing the lead passenger's name.
+                </p>
+              </div>
+              <div class="relative">
+                <div class="flex items-center gap-x-3">
+                  <span>
+                    <svg class="h-6 w-6 text-orange -ml-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <h5 class="font-semibold sm:text-base uppercase">24/7 Customer Support</h5>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  We are always available to help you with your transfer
+                </p>
+              </div>
+              <div class="relative">
+                <div class="flex items-center gap-x-3">
+                  <span>
+                    <svg class="h-6 w-6 text-orange -ml-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </span>
+                  <h5 class="font-semibold sm:text-base uppercase">Free SMS/text-message updates</h5>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  We will send you information about your driver 1 hour before the transfer (each way)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile App Downlaod -->
+    <div class="max-w-7xl h-96 overflow-hidden relative 2xl:mx-auto pt-12 pb-20">
+      <div class="mx-5 lg:mx-10">
+        <div class="lg:pb-0 lg:z-10 lg:relative">
+          <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-8">
+            <div class="flex flex-col gap-y-5 px-10 lg:col-span-1">
+              <h2 class="text-4xl text-black font-light">Take it easy!</h2>
+              <h4 class="text-2xl text-black font-bold">Download our App</h4>
+              <div class="flex items-center gap-x-2">
+                <a href="#">
+                  <img src="https://www.transfeero.com/mainjs/appleb.svg" alt="Download from the app store" style="width: 130px;">
+                </a>
+                <a href="#">
+                  <img src="https://www.transfeero.com/wp-content/uploads/2020/05/140xNxgoogle-play-badge.png.pagespeed.ic.cukXUDbN8E.webp" alt="Download from the play store" style="width: 140px;">
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-1 items-center justify-end bg-white">
+              <img class="ml-auto h-96" src="https://www.transfeero.com/wp-content/uploads/2020/05/450xNxmock_app_better.png.pagespeed.ic.4L9bI-jl7J.webp" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto bg-lightGray mt-20" aria-labelledby="footerHeading">
+        <h2 id="footerHeading" class="sr-only">Footer</h2>
+        <div class="mx-auto py-12 mx-4 sm:mx-6 lg:py-16 lg:mx-8 border-b-2 border-darkGray">
+          <p class="text-3xl text-black opacity-60">
+            Call Us <a class="font-bold" href="tel:0300 000 000 00">877-BJS-4747</a>  | <span class="font-bold">Contact Us</span> Online
+          </p>
+        </div>
+        <div class="mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+          <div class="xl:gap-8">
+            <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+              <div class="md:grid md:grid-cols-2 md:gap-8">
+                <div>
+                  <h3 class="text-3xl font-semibold text-black opacity-60">
+                    Our Company
+                  </h3>
+                  <ul class="mt-4 space-y-4">
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Join Our Network
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Privacy Policy & Licensing
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        California Privacy Policy
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-12 md:mt-0">
+                  <h3 class="text-3xl font-semibold text-black opacity-60">
+                    How It Works
+                  </h3>
+                  <ul class="mt-4 space-y-4">
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Certified Contractors
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Member Pledge
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Prepare for Your Project
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="md:grid md:grid-cols-2 md:gap-8">
+                <div>
+                  <h3 class="text-3xl font-semibold text-black opacity-60">
+                    Products
+                  </h3>
+                  <ul class="mt-4 space-y-4">
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        All Products
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Bath & Shower Systems
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Blinds, Shades & Shutters
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Cabinet Refacing
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Exterior Doors
+                      </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Flooring
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Generators
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Gutters
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Heating & Air
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Insulation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Roofing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Siding
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Solar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Water Filtration
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Windows
+                        </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mt-12 md:mt-0">
+                  <h3 class="text-3xl font-semibold text-black opacity-60">
+                    Products
+                  </h3>
+                  <ul class="mt-4 space-y-4">
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Free Estimate
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Adobe Reader
+                      </a>
+                    </li>
+      
+                    <li>
+                      <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                        Accessibility Statement
+                      </a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                          BJ’s.com
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            Site Map
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            BJ’s Gift Card Terms & Conditions
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-lg text-gray-500 hover:text-gray-900">
+                            COVID-19
+                        </a>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer>
+    <!-- Copyrights -->
+    <div class="max-w-7xl mx-auto bg-white">
+      <p class="text-lg text-gray-500 py-7">
+        &copy; 2014 - 2024 Powered by Installation Made Easy, Inc. 
+      </p>
+    </div>
+    <script>
+      function booking() {
+        return {
+          departureBlock: false,
+          arrivalBlock: false,
+          departureStartTyping: false,
+          arrivalStartTyping: true,
+          members: false,
+          totalMemberCounter: 0,
+          counter: 0,
+          checkInput(e) {
+            if(e.target.value === ''){
+              this.departureStartTyping = true;
+              this.departureBlock = false;
+            }
+            else {
+              this.departureStartTyping = false;
+              this.departureBlock = true;
+            }
+          },
+          inputFocus() {
+            this.departureStartTyping = false;
+            this.departureBlock = false;
+          },
+          increment() {
+            this.counter++;
+            this.totalMemberCounter = this.counter;
+          },
+          decrement() {
+            if(this.counter === 0) {
+              return;
+            }
+            this.counter--;
+            this.totalMemberCounter = this.counter;
+          }
+        }
+      }
+    </script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+      crossorigin="anonymous"></script>
+      <script type="text/javascript" src="jquery.waterwheelCarousel.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+      <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+      <script type="text/javascript" src="jquery.waterwheelCarousel.min.js"></script>
+    <script>
+    function toggleDropDown(event) {
+        let aElement = event.target;
+        if (event.target.nodeName == "svg") {
+            aElement = event.target.parentNode;
+        }
+        if (event.target.nodeName == "path") {
+            aElement = event.target.parentNode.parentNode;
+        }
+        $(aElement).siblings(".dropdown_menu.dropdown_menu--animated").toggleClass("block");
+    }
+    $('.autoplay').slick({
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        // centerPadding: '20px',
+        arrows: true,
+        responsive: [
+            {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+            },
+            {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false,
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: true,
+                arrows: false,
+            }
+            }
+        ]
+    });
+    $(document).ready(function(){
+        $('.home-slider').slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            });
+      });
+    
+    // Get titles from the DOM
+    var titleMain  = $("#animatedHeading");
+    var titleSubs  = titleMain.find("slick-active");
+
+    if (titleMain.length) {
+
+      titleMain.slick({
+        autoplay: false,
+        arrows: false,
+        dots: false,
+        slidesToShow: 3,
+        centerPadding: "10px",
+        draggable: false,
+        infinite: true,
+        pauseOnHover: false,
+        swipe: false,
+        touchMove: false,
+        vertical: true,
+        speed: 1000,
+        autoplaySpeed: 2000,
+        useTransform: true,
+        cssEase: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+        adaptiveHeight: true,
+      });
+
+      // On init
+      $(".slick-dupe").each(function(index, el) {
+        $("#animatedHeading").slick('slickAdd', "<div>" + el.innerHTML + "</div>");
+      });
+
+      // Manually refresh positioning of slick
+      titleMain.slick('slickPlay');
+    };
+    </script>
+</body>
+</html>

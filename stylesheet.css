@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+body, html {
+    font-family: 'Roboto', sans-serif !important; 
+}
+:root {
+    --ThemeOrange : #F9B442;
+    --BjsDarkGray : rgb(30, 27, 24);
+    --BjsRed : #cc0033;
+}
+.text-red {
+    color: var(--BjsRed);
+}
+.bg-red {
+    background-color: var(--BjsRed);
+}
+.border-red {
+    border-color: var(--BjsRed);
+}
+.text-orange {
+    color: var(--ThemeOrange);
+}
+.bg-orange {
+    background-color: var(--ThemeOrange);
+}
+.border-orange {
+    border-color: var(--ThemeOrange);
+}
+.text-darkGray {
+    color: var(--BjsDarkGray);
+}
+.bg-darkGray {
+    background-color: var(--BjsDarkGray);
+}
+.border-darkGray {
+    border-color: var(--BjsDarkGray);
+}
+#main {
+    height: 400px;
+    background: url('https://www.transfeero.com/wp-content/uploads/2020/06/mauritius.jpg');
+    background-size: 100% 100%;
+}
+.slick-next:before, .slick-prev:before {
+    font-size: 30px !important;
+    color: var(--BjsDarkGray) !important;
+}
+.slick-prev {
+    left: -50px !important;
+}
+.slick-next {
+    right: -45px !important;
+}
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: var(--ThemeOrange) !important;
+}
+
+#slider1 .slick-dots {
+    bottom: -25px;
+    padding: 6px;
+    margin: auto auto !important;
+    width: 100%;
+    z-index: 30;
+}
+#slider1 .slick-dots li button:before {
+    font-family: slick;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    opacity: 1;
+    color: #6B7280;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+#slider1 .slick-dots li.slick-active button:before {
+    opacity: 1; 
+    font-size: 23px;
+    color: white !important;
+    border: 1px solid transparent;
+}
+#slider1 img {
+    height: 500px;
+}
+ /* the slides */
+.slick-slide {
+    margin: 0 10px;
+}
+/* the parent */
+.slick-list {
+    margin: 0 -10px;
+}
+.testimonial-slider .slick-dots li button:before {
+    font-family: slick;
+    font-size: 19px;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    opacity: 1;
+    color: var(--BjsRed);
+    border: 1px solid white;
+    border-radius: 50%;
+}
+.testimonial-slider .slick-dots li.slick-active button:before {
+    opacity: 1; 
+    font-size: 23px;
+    color: white !important;
+    border: 1px solid transparent;
+}
+.testimonial-slider .slick-dots {
+    bottom: 0px;
+    padding: 6px;
+    margin: auto auto !important;
+    width: 100%;
+    z-index: 30;
+}
+
+
+#carousel {
+
+    /* width:1160px; */
+    height:300px;
+    position:relative;
+  }
+  #carousel img {
+    visibility:hidden; 
+    cursor:pointer;
+    /* padding-top:100px;  */
+  }
+  #prev{
+    position:absolute;
+    top:200px;
+    left:30px;
+  }
+  #next{
+    position:absolute;
+    top:200px;
+    right:0px;
+  }
