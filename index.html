@@ -101,7 +101,7 @@
         <!-- Booking 1 CONTENT (STEP - 1) -->
         <div x-show="step === 'step1'" class="relative flex flex-col lg:flex-row items-center shadow-xl z-20 rounded-md bg-gray-200 p-5">
           <fieldset class="w-full lg:w-72 px-2 py-1 rounded-md z-50">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : arrivalStartTyping === false}"
               >
@@ -163,7 +163,7 @@
             </div>
           </fieldset>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-40">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
@@ -245,7 +245,7 @@
             </div>
           </div>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-10 cursor-pointer" @click="members = true">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-3 border rounded-md border-black">
                 <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
                   <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -342,7 +342,7 @@
         <!-- Booking 2 CONTENT (STEP - 2) -->
         <div x-show="step === 'step2'" class="relative flex flex-col lg:flex-row items-center shadow-xl z-20 rounded-md bg-gray-200 p-5">
           <fieldset class="w-full lg:w-72 px-2 py-1 rounded-md z-50">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
@@ -404,7 +404,7 @@
             </div>
           </fieldset>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-40">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
@@ -488,7 +488,7 @@
             </div>
           </div>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-10 cursor-pointer" @click="members = true">
-            <div class="bg-white relative flex flex-col">
+            <div class="bg-white rounded-md relative flex flex-col">
               <div class="flex flex-col gap-y-1.5 w-full px-3 border rounded-md border-black">
                 <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
                   <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
