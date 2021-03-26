@@ -66,10 +66,14 @@
     </header>
 
     <!-- Main Booking Section  -->
-    <div id="main" class="max-w-7xl relative flex items-center justify-center mx-auto"
+    <div id="main" class="relative flex items-center justify-center mx-auto"
       x-data="booking()">
-       <div class="relative flex flex-col">
-         <!--Booking Buttons  -->
+       <div class="relative mt-40 md:mt-0 flex flex-col">
+          <!--Heading  -->
+        <div class="absolute w-full -top-16 lg:-top-28 z-10 bg-transparent">
+          <h1 class="text-xl lg:text-5xl font-bold text-white text-center capitalize">Reliable airport transfers</h1>
+        </div>
+        <!--Booking Buttons  -->
         <div class="absolute -top-8 z-10 bg-transparent pl-2">
           <span class="relative inline-flex shadow-sm rounded-md">
             <button type="button" @click.prevent="step = 'step1'" 
@@ -98,11 +102,20 @@
             </button>
           </span>
         </div>
+        <!-- Exchange Button -->
+        <div class="absolute top-20 lg:top-10 left-60 lg:left-72 z-30 bg-orange rounded-full border border-black">
+          <div class="bg-orange relative flex items-center justify-center h-10 w-10 rounded-full border-4 border-gray-200 cursor-pointer">
+            <span class="animate-ping absolute z-50 inline-flex h-full w-full rounded-full bg-orange opacity-75 pointer-events-none"></span>
+            <svg @click.prevent="exchange()" class="h-5 w-5 text-white transform rotate-90 lg:rotate-0" data-prefix="fas" data-icon="exchange-alt" class="svg-inline--fa fa-exchange-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"></path>
+            </svg>
+          </div>
+        </div>
         <!-- Booking 1 CONTENT (STEP - 1) -->
-        <div x-show="step === 'step1'" class="relative flex flex-col lg:flex-row items-center shadow-xl z-20 rounded-md bg-gray-200 p-5">
-          <fieldset class="w-full lg:w-72 px-2 py-1 rounded-md z-50">
+        <div x-show="step === 'step1'" class="relative w-full flex flex-col lg:flex-row items-center shadow-xl z-20 rounded-md bg-gray-200 p-5">
+          <fieldset class="w-72 px-2 py-1 rounded-md">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+              <div class="flex flex-col gap-y-2 w-full px-3 py-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : arrivalStartTyping === false}"
               >
                 <label for="arrivalInput" class="flex items-center gap-x-1 text-sm text-black">
@@ -115,7 +128,7 @@
                 </label>
                 <input @input.focus="checkArrivalInput($event)" @click="{arrivalStartTyping = true}" @click.away="arrivalInputFocus()" type="text" name="arrivalInput" id="arrivalInput" class="w-full focus:outline-none bg-white" placeholder="Select an airport">
               </div>
-              <div class="absolute top-12 w-full rounded-b-md border-black" 
+              <div class="absolute top-16 w-full rounded-b-md border-black z-50" 
                 :class="{'border border-t' : arrivalStartTyping === true}"
               >
                 <ul x-show="arrivalStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
@@ -164,7 +177,7 @@
           </fieldset>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-40">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+              <div class="flex flex-col gap-y-2 w-full px-3 py-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
                 <label for="goingTo" class="flex items-center gap-x-1 text-sm text-black">
@@ -175,7 +188,7 @@
                 </label>
                 <input @input.focus="checkDepartureInput($event)" @click="{departureStartTyping = true}" @click.away="departureInputFocus()" type="text" name="goingTo" id="goingTo" class="w-full focus:outline-none bg-white" placeholder="Enter an address or hotel name...">
               </div>
-              <div class="absolute top-12 w-full rounded-b-md border-black" 
+              <div class="absolute top-16 w-full rounded-b-md border-black" 
                 :class="{'border border-t' : departureStartTyping === true}"
               >
                 <ul x-show="departureStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
@@ -223,30 +236,348 @@
             </div>
           </fieldset>
           <div class="w-full lg:w-auto px-2 py-1 rounded-md z-30">
-            <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
-              <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span>Pickup Date </span>
-              </label>
-              <input type="datetime-local" value="2018-06-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+            <div @click="from_pickup = true" style="height: 4.375rem;" class="bg-white relative justify-center border border-black flex flex-col py-2 px-3 rounded-md cursor-pointer">
+              <div class="flex flex-col w-full px-0.5 rounded-md">
+                <label class="flex items-center gap-x-1 text-sm text-black cursor-pointer">
+                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Pickup Date </span>
+                </label>
+                <div class="flex flex-col">
+                  <p x-show="from_pickup_date" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                    </svg>
+                    <span>SelectedDate</span>
+                  </p>
+                  <p x-show="from_pickup_time" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>SelectedTime</span>
+                  </p>
+                </div>
+              </div>
+              <div x-show="from_pickup" @click.away="from_pickup = false" class="absolute z-10 w-80 bg-white py-3 left-0 top-20 rounded-md border border-black">
+                <!-- Calender -->
+                <div class="calender px-3 h-60 -mt-3 text-center flex items-center justify-center">
+                  <style>
+                    [x-cloak] {
+                        display: none;
+                    }
+                  </style>
+                  <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+                    <div class="container mx-auto py-2">
+                      <div class="bg-white rounded-md shadow overflow-hidden">
+                        <div class="flex items-center justify-between py-1 px-6">
+                          <div>
+                            <span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
+                            <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
+                          </div>
+                          <div class="border rounded-lg px-1" style="padding-top: 2px;">
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 0 }"
+                              :disabled="month == 0 ? true : false"
+                              @click="month--; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                              </svg>  
+                            </button>
+                            <div class="border-r inline-flex h-6"></div>		
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1 outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 11 }"
+                              :disabled="month == 11 ? true : false"
+                              @click="month++; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                              </svg>									  
+                            </button>
+                          </div>
+                        </div>	
+                
+                        <div class="-mx-1 -mb-1">
+                          <div class="flex flex-wrap">
+                            <template x-for="(day, index) in DAYS" :key="index">	
+                              <div style="width: 14.26%" class="px-2 py-2">
+                                <div
+                                  x-text="day" 
+                                  class="text-gray-600 text-xs uppercase tracking-wide font-bold text-center"></div>
+                              </div>
+                            </template>
+                          </div>
+                
+                          <div class="flex flex-wrap border-t border-l">
+                            <template x-for="blankday in blankdays">
+                              <div 
+                                style="width: 14.28%; height: 30px"
+                                class="text-center border-r border-b px-4 pt-2"	
+                              ></div>
+                            </template>	
+                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">	
+                              <div style="width: 14.28%; height: 30px" class="flex items-center border-r border-b relative">
+                                <div
+                                  x-text="date"
+                                  class="inline-flex w-6 h-6 -ml-3 md:-ml-2 lg:-ml-0 xl:ml-2 md:mt-1 xl:mt-0 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
+                                  :class="{'bg-orange text-white': isToday(date) == true, 'text-gray-700 hover:text-white hover:bg-yellow-500': isToday(date) == false }"	
+                                ></div>
+                                <div style="height: 80px;" class="overflow-y-auto mt-1">
+                                  <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
+                                    <div
+                                      class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
+                                    >
+                                    </div>
+                                  </template>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pickup Time  -->
+                <div class="Flex flex-col gap-y-2 px-3 w-full bg-white">
+                  <div>
+                    <label class="flex justify-center items-center gap-x-1 text-gray-800 text-sm">
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Pickup time</span>
+                    </label>
+                  </div>
+                  <div class="flex justify-center items-center gap-x-3 mt-1">
+                    <!-- Hours -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Hour</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                    </select>
+                    <!-- Minutes -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Minute</option>
+                      <option value="05">05</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option>
+                    </select>
+                  </div>
+                  <div class="relative my-2 mx-2">
+                    <button @click.stop="from_pickup = false, from_pickup_date = true, from_pickup_time = true" class="w-full bg-orange hover:bg-yellow-500 px-4 py-1 rounded-full focus:outline-none">
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="w-full lg:w-auto px-2 py-1 rounded-md z-20">
-            <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
-              <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span>Add a Return <span class="text-xs">(optional)</span> </span>
-              </label>
-              <input type="datetime-local" value="2018-07-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+          <div class="w-full lg:w-auto px-2 py-1 rounded-md z-30">
+            <div @click="from_return = true" style="height: 4.375rem;" class="bg-white relative justify-center border border-black flex flex-col py-2 px-3 rounded-md cursor-pointer">
+              <div class="flex flex-col w-full px-0.5 rounded-md">
+                <label class="flex items-center gap-x-1 text-sm text-black cursor-pointer">
+                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Add a Return </span>
+                </label>
+                <div class="flex flex-col">
+                  <p x-show="from_return_date" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                    </svg>
+                    <span>SelectedDate</span>
+                  </p>
+                  <p x-show="from_return_time" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>SelectedTime</span>
+                  </p>
+                </div>
+              </div>
+              <div x-show="from_return" @click.away="from_return = false" class="absolute z-10 w-80 bg-white py-3 left-0 top-20 rounded-md border border-black">
+                <!-- Calender -->
+                <div class="calender px-3 h-60 -mt-3 text-center flex items-center justify-center">
+                  <style>
+                    [x-cloak] {
+                        display: none;
+                    }
+                  </style>
+                  <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+                    <div class="container mx-auto py-2">
+                      <div class="bg-white rounded-md shadow overflow-hidden">
+                        <div class="flex items-center justify-between py-1 px-6">
+                          <div>
+                            <span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
+                            <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
+                          </div>
+                          <div class="border rounded-lg px-1" style="padding-top: 2px;">
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 0 }"
+                              :disabled="month == 0 ? true : false"
+                              @click="month--; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                              </svg>  
+                            </button>
+                            <div class="border-r inline-flex h-6"></div>		
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1 outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 11 }"
+                              :disabled="month == 11 ? true : false"
+                              @click="month++; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                              </svg>									  
+                            </button>
+                          </div>
+                        </div>	
+                
+                        <div class="-mx-1 -mb-1">
+                          <div class="flex flex-wrap">
+                            <template x-for="(day, index) in DAYS" :key="index">	
+                              <div style="width: 14.26%" class="px-2 py-2">
+                                <div
+                                  x-text="day" 
+                                  class="text-gray-600 text-xs uppercase tracking-wide font-bold text-center"></div>
+                              </div>
+                            </template>
+                          </div>
+                
+                          <div class="flex flex-wrap border-t border-l">
+                            <template x-for="blankday in blankdays">
+                              <div 
+                                style="width: 14.28%; height: 30px"
+                                class="text-center border-r border-b px-4 pt-2"	
+                              ></div>
+                            </template>	
+                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">	
+                              <div style="width: 14.28%; height: 30px" class="flex items-center border-r border-b relative">
+                                <div
+                                  x-text="date"
+                                  class="inline-flex w-6 h-6 -ml-3 md:-ml-2 lg:-ml-0 xl:ml-2 md:mt-1 xl:mt-0 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
+                                  :class="{'bg-orange text-white': isToday(date) == true, 'text-gray-700 hover:text-white hover:bg-yellow-500': isToday(date) == false }"	
+                                ></div>
+                                <div style="height: 80px;" class="overflow-y-auto mt-1">
+                                  <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
+                                    <div
+                                      class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
+                                    >
+                                    </div>
+                                  </template>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pickup Time  -->
+                <div class="Flex flex-col gap-y-2 px-3 w-full bg-white">
+                  <div>
+                    <label class="flex justify-center items-center gap-x-1 text-gray-800 text-sm">
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Pickup time</span>
+                    </label>
+                  </div>
+                  <div class="flex justify-center items-center gap-x-3 mt-1">
+                    <!-- Hours -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Hour</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                    </select>
+                    <!-- Minutes -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Minute</option>
+                      <option value="05">05</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option>
+                    </select>
+                  </div>
+                  <div class="relative my-2 mx-2">
+                    <button @click.stop="from_return = false, from_return_date = true, from_return_time = true" class="w-full bg-orange hover:bg-yellow-500 px-4 py-1 rounded-full focus:outline-none">
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-10 cursor-pointer" @click="members = true">
+          <fieldset class="w-full lg:w-20 px-2 py-1 rounded-md z-10 cursor-pointer" @click="members = true">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-3 border rounded-md border-black">
+              <div style="height: 4.375rem;" class="flex flex-col justify-center gap-y-1.5 w-full px-3 border rounded-md border-black">
                 <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
                   <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -255,7 +586,7 @@
                 </label>
                 <span class="block mb-0.5" x-text="totalMemberCounter">22</span>
               </div>
-              <div x-show="members" class="absolute z-10 w-52 right-0 top-14 rounded-md border border-black">
+              <div x-show="members" class="absolute z-10 w-52 right-0 top-20 rounded-md border border-black">
                 <ul class="w-full bg-white rounded-md text-base divide-y focus:outline-none">
                   <li class="text-xs text-gray-900 relative py-2 px-2">
                     <div class="flex items-center justify-between">
@@ -321,7 +652,7 @@
                     </div>
                   </li>
                   <li class="flex relative py-2 px-2">
-                    <button @click.stop="members = false" class="w-full bg-orange hover:bg-yellow-500 px-4 rounded-full focus:outline-none">
+                    <button @click.stop="members = false, counter = 0" class="w-full bg-orange hover:bg-yellow-500 px-4 rounded-full focus:outline-none">
                       Confirm
                     </button>
                   </li>
@@ -331,19 +662,19 @@
             </div>
           </fieldset>
           <div class="w-full lg:w-auto px-2 py-1 rounded-md">
-            <button class="flex items-center justify-center gap-x-1 w-full h-12 bg-orange hover:bg-yellow-500 px-4 rounded-md focus:outline-none">
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button style="height: 4.375rem;" class="flex items-center justify-center gap-x-1 w-full h-12 bg-orange hover:bg-yellow-500 px-4 rounded-md focus:outline-none">
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span class="uppercase">Search</span>
+              <span class="uppercase text-white">Search</span>
             </button>
           </div>
         </div>
         <!-- Booking 2 CONTENT (STEP - 2) -->
         <div x-show="step === 'step2'" class="relative flex flex-col lg:flex-row items-center shadow-xl z-20 rounded-md bg-gray-200 p-5">
-          <fieldset class="w-full lg:w-72 px-2 py-1 rounded-md z-50">
+          <fieldset class="w-72 px-2 py-1 rounded-md z-50">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+              <div class="flex flex-col gap-y-2 w-full px-3 py-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
                 <label for="arrivalInput" class="flex items-center gap-x-1 text-sm text-black">
@@ -356,7 +687,7 @@
                 </label>
                 <input @input.focus="checkDepartureInput($event)" @click="{departureStartTyping = true}" @click.away="departureInputFocus()" type="text" name="arrivalInput" id="arrivalInput" class="w-full focus:outline-none bg-white" placeholder="Select an Airport">
               </div>
-              <div class="absolute top-12 w-full rounded-b-md border-black" 
+              <div class="absolute top-16 w-full rounded-b-md border-black" 
                 :class="{'border border-t' : departureStartTyping === true}"
               >
                 <ul x-show="departureStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
@@ -405,7 +736,7 @@
           </fieldset>
           <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-40">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-2 border border-b rounded-t-md border-black"
+              <div class="flex flex-col gap-y-2 w-full px-3 py-2 border border-b rounded-t-md border-black"
               :class="{'rounded-md' : departureStartTyping === false}"
               >
                 <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
@@ -418,7 +749,7 @@
                 </label>
                 <input @input.focus="checkArrivalInput($event)" @click="{arrivalStartTyping = true}" @click.away="arrivalInputFocus()" type="text" name="arrivalInput" id="arrivalInput" class="w-full focus:outline-none bg-white" placeholder="Enter an address or hotel name...">
               </div>
-              <div class="absolute top-12 w-full rounded-b-md border-black" 
+              <div class="absolute top-16 w-full rounded-b-md border-black" 
                 :class="{'border border-t' : arrivalStartTyping === true}"
               >
                 <ul x-show="arrivalStartTyping" class="w-full bg-white rounded-b-md text-base focus:outline-none">
@@ -466,39 +797,357 @@
             </div>
           </fieldset>
           <div class="w-full lg:w-auto px-2 py-1 rounded-md z-30">
-            <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
-              <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span>Pickup Date </span>
-              </label>
-              <input type="datetime-local" value="2018-06-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+            <div @click="to_pickup = true" style="height: 4.375rem;" class="bg-white relative justify-center border border-black flex flex-col py-2 px-3 rounded-md cursor-pointer">
+              <div class="flex flex-col w-full px-0.5 rounded-md">
+                <label class="flex items-center gap-x-1 text-sm text-black cursor-pointer">
+                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Pickup Date </span>
+                </label>
+                <div class="flex flex-col">
+                  <p x-show="to_pickup_date" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                    </svg>
+                    <span>SelectedDate</span>
+                  </p>
+                  <p x-show="to_pickup_time" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>SelectedTime</span>
+                  </p>
+                </div>
+              </div>
+              <div x-show="to_pickup" @click.away="to_pickup = false" class="absolute z-10 w-80 bg-white py-3 left-0 top-20 rounded-md border border-black">
+                <!-- Calender -->
+                <div class="calender px-3 h-60 -mt-3 text-center flex items-center justify-center">
+                  <style>
+                    [x-cloak] {
+                        display: none;
+                    }
+                  </style>
+                  <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+                    <div class="container mx-auto py-2">
+                      <div class="bg-white rounded-md shadow overflow-hidden">
+                        <div class="flex items-center justify-between py-1 px-6">
+                          <div>
+                            <span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
+                            <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
+                          </div>
+                          <div class="border rounded-lg px-1" style="padding-top: 2px;">
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 0 }"
+                              :disabled="month == 0 ? true : false"
+                              @click="month--; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                              </svg>  
+                            </button>
+                            <div class="border-r inline-flex h-6"></div>		
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1 outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 11 }"
+                              :disabled="month == 11 ? true : false"
+                              @click="month++; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                              </svg>									  
+                            </button>
+                          </div>
+                        </div>	
+                
+                        <div class="-mx-1 -mb-1">
+                          <div class="flex flex-wrap">
+                            <template x-for="(day, index) in DAYS" :key="index">	
+                              <div style="width: 14.26%" class="px-2 py-2">
+                                <div
+                                  x-text="day" 
+                                  class="text-gray-600 text-xs uppercase tracking-wide font-bold text-center"></div>
+                              </div>
+                            </template>
+                          </div>
+                
+                          <div class="flex flex-wrap border-t border-l">
+                            <template x-for="blankday in blankdays">
+                              <div 
+                                style="width: 14.28%; height: 30px"
+                                class="text-center border-r border-b px-4 pt-2"	
+                              ></div>
+                            </template>	
+                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">	
+                              <div style="width: 14.28%; height: 30px" class="flex items-center border-r border-b relative">
+                                <div
+                                  x-text="date"
+                                  class="inline-flex w-6 h-6 -ml-3 md:-ml-2 lg:-ml-0 xl:ml-2 md:mt-1 xl:mt-0 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
+                                  :class="{'bg-orange text-white': isToday(date) == true, 'text-gray-700 hover:text-white hover:bg-yellow-500': isToday(date) == false }"	
+                                ></div>
+                                <div style="height: 80px;" class="overflow-y-auto mt-1">
+                                  <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
+                                    <div
+                                      class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
+                                    >
+                                    </div>
+                                  </template>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pickup Time  -->
+                <div class="Flex flex-col gap-y-2 px-3 w-full bg-white">
+                  <div>
+                    <label class="flex justify-center items-center gap-x-1 text-gray-800 text-sm">
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Pickup time</span>
+                    </label>
+                  </div>
+                  <div class="flex justify-center items-center gap-x-3 mt-1">
+                    <!-- Hours -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Hour</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                    </select>
+                    <!-- Minutes -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Minute</option>
+                      <option value="05">05</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option>
+                    </select>
+                  </div>
+                  <div class="relative my-2 mx-2">
+                    <button @click.stop="to_pickup = false, to_pickup_date = true, to_pickup_time = true" class="w-full bg-orange hover:bg-yellow-500 px-4 py-1 rounded-full focus:outline-none">
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="w-full lg:w-auto px-2 py-1 rounded-md z-20">
-            <div class="bg-white border border-black py-0.5 px-2 pb-1 rounded-md">
-              <label for="pickup_dateTime" class="flex items-center gap-x-1 text-sm text-black">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span>Add a Return <span class="text-xs">(optional)</span> </span>
-              </label>
-              <input type="datetime-local" value="2018-07-12T07:30" name="pickup_dateTime" id="pickup_dateTime" class="focus:outline-none sm:text-xs rounded-md">
+          <div class="w-full lg:w-auto px-2 py-1 rounded-md z-30">
+            <div @click="to_return = true" style="height: 4.375rem;" class="bg-white relative justify-center border border-black flex flex-col py-2 px-3 rounded-md cursor-pointer">
+              <div class="flex flex-col w-full px-0.5 rounded-md">
+                <label class="flex items-center gap-x-1 text-sm text-black cursor-pointer">
+                  <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <span>Add a Return </span>
+                </label>
+                <div class="flex flex-col">
+                  <p x-show="to_return_date" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                    </svg>
+                    <span>SelectedDate</span>
+                  </p>
+                  <p x-show="to_return_time" class="flex items-center gap-x-1 text-xs">
+                    <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>SelectedTime</span>
+                  </p>
+                </div>
+              </div>
+              <div x-show="to_return" @click.away="to_return = false" class="absolute z-10 w-80 bg-white py-3 left-0 top-20 rounded-md border border-black">
+                <!-- Calender -->
+                <div class="calender px-3 h-60 -mt-3 text-center flex items-center justify-center">
+                  <style>
+                    [x-cloak] {
+                        display: none;
+                    }
+                  </style>
+                  <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+                    <div class="container mx-auto py-2">
+                      <div class="bg-white rounded-md shadow overflow-hidden">
+                        <div class="flex items-center justify-between py-1 px-6">
+                          <div>
+                            <span x-text="MONTH_NAMES[month]" class="text-lg font-bold text-gray-800"></span>
+                            <span x-text="year" class="ml-1 text-lg text-gray-600 font-normal"></span>
+                          </div>
+                          <div class="border rounded-lg px-1" style="padding-top: 2px;">
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex cursor-pointer hover:bg-gray-200 p-1 items-center outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 0 }"
+                              :disabled="month == 0 ? true : false"
+                              @click="month--; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                              </svg>  
+                            </button>
+                            <div class="border-r inline-flex h-6"></div>		
+                            <button 
+                              type="button"
+                              class="leading-none rounded-lg transition ease-in-out duration-100 inline-flex items-center cursor-pointer hover:bg-gray-200 p-1 outline-none focus:outline-none" 
+                              :class="{'cursor-not-allowed opacity-25': month == 11 }"
+                              :disabled="month == 11 ? true : false"
+                              @click="month++; getNoOfDays()">
+                              <svg class="h-6 w-6 text-gray-500 inline-flex leading-none"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                              </svg>									  
+                            </button>
+                          </div>
+                        </div>	
+                
+                        <div class="-mx-1 -mb-1">
+                          <div class="flex flex-wrap">
+                            <template x-for="(day, index) in DAYS" :key="index">	
+                              <div style="width: 14.26%" class="px-2 py-2">
+                                <div
+                                  x-text="day" 
+                                  class="text-gray-600 text-xs uppercase tracking-wide font-bold text-center"></div>
+                              </div>
+                            </template>
+                          </div>
+                
+                          <div class="flex flex-wrap border-t border-l">
+                            <template x-for="blankday in blankdays">
+                              <div 
+                                style="width: 14.28%; height: 30px"
+                                class="text-center border-r border-b px-4 pt-2"	
+                              ></div>
+                            </template>	
+                            <template x-for="(date, dateIndex) in no_of_days" :key="dateIndex">	
+                              <div style="width: 14.28%; height: 30px" class="flex items-center border-r border-b relative">
+                                <div
+                                  x-text="date"
+                                  class="inline-flex w-6 h-6 -ml-3 md:-ml-2 lg:-ml-0 xl:ml-2 md:mt-1 xl:mt-0 items-center justify-center cursor-pointer text-center leading-none rounded-full transition ease-in-out duration-100"
+                                  :class="{'bg-orange text-white': isToday(date) == true, 'text-gray-700 hover:text-white hover:bg-yellow-500': isToday(date) == false }"	
+                                ></div>
+                                <div style="height: 80px;" class="overflow-y-auto mt-1">
+                                  <template x-for="event in events.filter(e => new Date(e.event_date).toDateString() ===  new Date(year, month, date).toDateString() )">	
+                                    <div
+                                      class="px-2 py-1 rounded-lg mt-1 overflow-hidden border"
+                                    >
+                                    </div>
+                                  </template>
+                                </div>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Pickup Time  -->
+                <div class="Flex flex-col gap-y-2 px-3 w-full bg-white">
+                  <div>
+                    <label class="flex justify-center items-center gap-x-1 text-gray-800 text-sm">
+                      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Pickup time</span>
+                    </label>
+                  </div>
+                  <div class="flex justify-center items-center gap-x-3 mt-1">
+                    <!-- Hours -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Hour</option>
+                      <option value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                    </select>
+                    <!-- Minutes -->
+                    <select class="bg-white px-3 py-2 rounded-md text-sm border outline-none">
+                      <option value="" selected>Minute</option>
+                      <option value="05">05</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option>
+                    </select>
+                  </div>
+                  <div class="relative my-2 mx-2">
+                    <button @click.stop="to_return = false, to_return_date = true, to_return_time = true" class="w-full bg-orange hover:bg-yellow-500 px-4 py-1 rounded-full focus:outline-none">
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <fieldset class="w-full lg:w-auto px-2 py-1 rounded-md z-10 cursor-pointer" @click="members = true">
+          <fieldset class="w-full lg:w-20 px-2 py-1 rounded-md z-10 cursor-pointer" @click="to_members = true">
             <div class="bg-white rounded-md relative flex flex-col">
-              <div class="flex flex-col gap-y-1.5 w-full px-3 border rounded-md border-black">
+              <div style="height: 4.375rem;" class="flex flex-col justify-center gap-y-1.5 w-full px-3 border rounded-md border-black">
                 <label for="departureInput" class="flex items-center gap-x-1 text-sm text-black">
                   <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                   <span class="lg:hidden">passengers</span>
                 </label>
-                <span class="block mb-0.5" x-text="totalMemberCounter">22</span>
+                <span class="block mb-0.5" x-text="to_totalMemberCounter">22</span>
               </div>
-              <div x-show="members" class="absolute z-10 w-52 right-0 top-14 rounded-md border border-black">
+              <div x-show="to_members" class="absolute z-10 w-52 right-0 top-20 rounded-md border border-black">
                 <ul class="w-full bg-white rounded-md text-base divide-y focus:outline-none">
                   <li class="text-xs text-gray-900 relative py-2 px-2">
                     <div class="flex items-center justify-between">
@@ -507,13 +1156,13 @@
                         <span class="text-xs text-gray-500">+12 years</span>
                       </p>
                       <div class="flex items-center gap-x-2">
-                        <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
                           </svg>
                         </button>
                         <span class="text-lg" x-text="counter">1</span>
-                        <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
@@ -528,13 +1177,13 @@
                         <span class="text-xs text-gray-500">2-12 years</span>
                       </p>
                       <div class="flex items-center gap-x-2">
-                        <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
                           </svg>
                         </button>
                         <span class="text-lg" x-text="counter">1</span>
-                        <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
@@ -549,13 +1198,13 @@
                         <span class="text-xs text-gray-500">0-2 years</span>
                       </p>
                       <div class="flex items-center gap-x-2">
-                        <button @click="decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_decrement()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6" />
                           </svg>
                         </button>
                         <span class="text-lg" x-text="counter">1</span>
-                        <button @click="increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
+                        <button @click="to_increment()" class="h-7 w-7 bg-orange hover:bg-yellow-500 rounded-full focus:outline-none">
                           <svg class="h-3 w-3 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                           </svg>
@@ -564,7 +1213,7 @@
                     </div>
                   </li>
                   <li class="flex relative py-2 px-2">
-                    <button @click.stop="members = false" class="w-full bg-orange hover:bg-yellow-500 px-4 rounded-full focus:outline-none">
+                    <button @click.stop="to_members = false, counter = 0" class="w-full bg-orange hover:bg-yellow-500 px-4 rounded-full focus:outline-none">
                       Confirm
                     </button>
                   </li>
@@ -574,18 +1223,18 @@
             </div>
           </fieldset>
           <div class="w-full lg:w-auto px-2 py-1 rounded-md">
-            <button class="flex items-center justify-center gap-x-1 w-full h-12 bg-orange hover:bg-yellow-500 px-4 rounded-md focus:outline-none">
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button style="height: 4.375rem;" class="flex items-center justify-center gap-x-1 w-full h-12 bg-orange hover:bg-yellow-500 px-4 rounded-md focus:outline-none">
+              <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span class="uppercase">Search</span>
+              <span class="text-white uppercase">Search</span>
             </button>
           </div>
         </div>
        </div>
     </div>
     <!-- Services -->
-    <div class="max-w-7xl relative mx-5 lg:mx-10 lg:mx-auto">
+    <div class="max-w-7xl relative mt-20 lg:mt-0 mx-5 lg:mx-10 lg:mx-auto">
       <div class="py-12 bg-white">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <dl class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-12">
@@ -1043,7 +1692,7 @@
       </div>
     </div>
     <!-- Reliability Worldwide  -->
-    <div class="max-w-7xl overflow-hidden relative mx-5 lg:mx-10 lg:mx-auto">
+    <div class="overflow-hidden relative mx-5 lg:mx-10 lg:mx-auto">
       <div class="relative justify-center items-center">
         <div class="mx-auto max-h-96">
           <img class="w-full h-28 lg:h-auto" src="https://www.transfeero.com/wp-content/uploads/2020/04/foto_transfeero_fina-opti.jpg" alt="">
@@ -1502,7 +2151,7 @@
       </div>
     </div>
     <!-- Footer -->
-    <footer class="max-w-7xl mx-auto bg-black opacity-90 text-center lg:text-left" aria-labelledby="footerHeading">
+    <footer class="mx-auto bg-black opacity-90 text-center lg:text-left" aria-labelledby="footerHeading">
       <h2 id="footerHeading" class="sr-only">Footer</h2>
       <div class="max-w-7xl mx-auto pt-12 px-4 sm:px-6 lg:pt-16 py-5 lg:px-8">
         <div class="pb-8 lg:grid lg:grid-cols-3 lg:gap-8">
@@ -1592,10 +2241,12 @@
       </div>
     </footer>
     <!-- Copyrights -->
-    <div class="max-w-7xl mx-auto bg-black px-4 sm:px-6 lg:px-8">
-      <p class="text-xs text-center lg:text-left text-gray-600 py-2">
-        2021 © TRANSFEERO™ | All right reserved | IT05304190878 | D.D.S. n° 3451S7 Privacy Policy
-      </p>
+    <div class="mx-auto bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-xs text-center lg:text-left text-gray-600 py-2">
+          2021 © TRANSFEERO™ | All right reserved | IT05304190878 | D.D.S. n° 3451S7 Privacy Policy
+        </p>
+      </div>
     </div>
     <!-- BOOKING CONTROL  -->
     <script>
@@ -1606,8 +2257,23 @@
           arrivalBlock: false,
           departureStartTyping: false,
           arrivalStartTyping: false,
+          from_pickup: false,
+          from_pickup_date: false,
+          from_pickup_time: false,
+          from_return: false,
+          from_return_date: false,
+          from_return_time: false,
           members: false,
           totalMemberCounter: 0,
+          // Step 2 
+          to_pickup: false,
+          to_pickup_date: false,
+          to_pickup_time: false,
+          to_return: false,
+          to_return_date: false,
+          to_return_time: false,
+          to_members:false,
+          to_totalMemberCounter: 0,
           counter: 0,
           checkDepartureInput(e) {
             if(e.target.value === ''){
@@ -1637,7 +2303,6 @@
             this.arrivalStartTyping = false;
             this.arrivalBlock = false;
           },
-          
           increment() {
             this.counter++;
             this.totalMemberCounter = this.counter;
@@ -1648,27 +2313,34 @@
             }
             this.counter--;
             this.totalMemberCounter = this.counter;
+          },
+          to_increment() {
+            this.counter++;
+            this.to_totalMemberCounter = this.counter;
+          },
+          to_decrement() {
+            if(this.counter === 0) {
+              return;
+            }
+            this.counter--;
+            this.to_totalMemberCounter = this.counter;
+          },
+          exchange() {
+            if(this.step === 'step1') {
+              this.step = 'step2'
+            } else {
+              this.step = 'step1'
+            }
           }
         }
       }
     </script>
-
     <!-- SLIDERS  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
       integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
       crossorigin="anonymous"></script>
     <script>
-    function toggleDropDown(event) {
-        let aElement = event.target;
-        if (event.target.nodeName == "svg") {
-            aElement = event.target.parentNode;
-        }
-        if (event.target.nodeName == "path") {
-            aElement = event.target.parentNode.parentNode;
-        }
-        $(aElement).siblings(".dropdown_menu.dropdown_menu--animated").toggleClass("block");
-    }
     $('.autoplay').slick({
         slidesToShow: 3,
         slidesToScroll: 3,
@@ -1738,6 +2410,123 @@
       // Manually refresh positioning of slick
       titleMain.slick('slickPlay');
     };
+    </script>
+
+    <!-- Calender -->
+    <script>
+      const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  
+      function app() {
+        return {
+          month: '',
+          year: '',
+          no_of_days: [],
+          blankdays: [],
+          days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  
+          events: [
+            {
+              event_date: new Date(2020, 3, 1),
+              event_title: "April Fool's Day",
+              event_theme: 'blue'
+            },
+  
+            {
+              event_date: new Date(2020, 3, 10),
+              event_title: "Birthday",
+              event_theme: 'red'
+            },
+  
+            {
+              event_date: new Date(2020, 3, 16),
+              event_title: "Upcoming Event",
+              event_theme: 'green'
+            }
+          ],
+          event_title: '',
+          event_date: '',
+          event_theme: 'blue',
+  
+          themes: [
+            {
+              value: "blue",
+              label: "Blue Theme"
+            },
+            {
+              value: "red",
+              label: "Red Theme"
+            },
+            {
+              value: "yellow",
+              label: "Yellow Theme"
+            },
+            {
+              value: "green",
+              label: "Green Theme"
+            },
+            {
+              value: "purple",
+              label: "Purple Theme"
+            }
+          ],
+  
+          initDate() {
+            let today = new Date();
+            this.month = today.getMonth();
+            this.year = today.getFullYear();
+            this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
+          },
+  
+          isToday(date) {
+            const today = new Date();
+            const d = new Date(this.year, this.month, date);
+  
+            return today.toDateString() === d.toDateString() ? true : false;
+          },
+  
+          addEvent() {
+            if (this.event_title == '') {
+              return;
+            }
+  
+            this.events.push({
+              event_date: this.event_date,
+              event_title: this.event_title,
+              event_theme: this.event_theme
+            });
+  
+            console.log(this.events);
+  
+            // clear the form data
+            this.event_title = '';
+            this.event_date = '';
+            this.event_theme = 'blue';
+  
+            //close the modal
+            this.openEventModal = false;
+          },
+  
+          getNoOfDays() {
+            let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+  
+            // find where to start calendar day of week
+            let dayOfWeek = new Date(this.year, this.month).getDay();
+            let blankdaysArray = [];
+            for ( var i=1; i <= dayOfWeek; i++) {
+              blankdaysArray.push(i);
+            }
+  
+            let daysArray = [];
+            for ( var i=1; i <= daysInMonth; i++) {
+              daysArray.push(i);
+            }
+            
+            this.blankdays = blankdaysArray;
+            this.no_of_days = daysArray;
+          }
+        }
+      }
     </script>
 </body>
 </html>

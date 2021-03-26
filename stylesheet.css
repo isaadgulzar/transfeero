@@ -34,3 +34,6 @@ body, html {
     opacity: .75;
     color: var(--ThemeOrange) !important;
 }
+.animate-ping {
+    animation-duration: 3s;
+}
