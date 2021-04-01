@@ -7,6 +7,13 @@
     <title>Bookings - Transfeero</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Slick Slider CDN  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="./stylesheet.css">
 </head>
 <body>
@@ -166,44 +173,52 @@
         </nav>
     </header>
     <!-- Services -->
-    <div class="max-w-7xl relative mt-20 lg:mt-1 mx-5 lg:mx-10 lg:mx-auto">
+    <div class="max-w-7xl relative mt-5 lg:mt-1 mx-5 lg:mx-10 lg:mx-auto">
         <div class="py-2 bg-white">
           <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            <div class="lg:grid lg:grid-cols-4 items-center lg:gap-10">
-              <div class="flex items-center gap-x-2">
-                <div>
-                    <img class="h-20 w-20" src="https://www.transfeero.com/mainjs/svg/free_cancellation.svg" alt="">
-                </div>
-                <div>
-                    <p class="text-lg text-gray-900 mt-2.5"> Free cancellation</p>
-                    <span class="text-xs text-gray-500">up to 24 hours before pickup</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-x-5">
-                <div>
-                    <img class="h-12 w-12" src="https://www.transfeero.com/mainjs/svg/flight_tracking.svg" alt="">
-                </div>
-                <div>
-                    <p class="text-lg text-gray-900 mt-1"> Flight tracking</p>
-                    <span class="text-xs text-gray-500">Driver will monitor your flight</span>
+            <div class="services-slider lg:grid lg:grid-cols-4 justify-center items-center lg:gap-10">
+              <div class="col-span-1">
+                <div class="flex w-full items-center gap-x-2">
+                    <div>
+                        <img class="h-20 w-20" src="https://www.transfeero.com/mainjs/svg/free_cancellation.svg" alt="">
+                    </div>
+                    <div>
+                        <p class="text-lg text-gray-900 lg:mt-2.5"> Free cancellation</p>
+                        <span class="text-xs text-gray-500">up to 24 hours before pickup</span>
+                    </div>
                 </div>
               </div>
-              <div class="flex items-center gap-x-2 -mt-1.5">
-                <div>
-                    <img class="h-16 w-20" src="https://www.transfeero.com/mainjs/svg/professional_drivers.svg" alt="">
-                </div>
-                <div>
-                    <p class="text-lg text-gray-900 mt-2.5"> Licensed Chauffeurs</p>
-                    <span class="text-xs text-gray-500">Maximum comfort and safety</span>
+              <div class="col-span-1">
+                <div class="flex w-full items-center gap-x-5 ml-4 lg:ml-0">
+                  <div>
+                      <img class="h-12 w-12" src="https://www.transfeero.com/mainjs/svg/flight_tracking.svg" alt="">
+                  </div>
+                  <div>
+                      <p class="text-lg text-gray-900 lg:mt-1"> Flight tracking</p>
+                      <span class="text-xs text-gray-500">Driver will monitor your flight</span>
+                  </div>
                 </div>
               </div>
-              <div class="flex items-center gap-x-2 -mt-1.5">
-                <div>
-                    <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/customer_service.svg" alt="">
+              <div class="col-span-1">
+                <div class="flex items-center gap-x-2 -mt-1.5">
+                  <div>
+                      <img class="h-16 w-20" src="https://www.transfeero.com/mainjs/svg/professional_drivers.svg" alt="">
+                  </div>
+                  <div>
+                      <p class="text-lg text-gray-900 lg:mt-2.5"> Licensed Chauffeurs</p>
+                      <span class="text-xs text-gray-500">Maximum comfort and safety</span>
+                  </div>
                 </div>
-                <div>
-                    <p class="text-lg text-gray-900 mt-2.5"> 24/7 Support</p>
-                    <span class="text-xs text-gray-500">Dedicated customer service</span>
+              </div>
+              <div class="col-span-1">
+                <div class="flex items-center gap-x-2 -mt-1.5">
+                  <div>
+                      <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/customer_service.svg" alt="">
+                  </div>
+                  <div>
+                      <p class="text-lg text-gray-900 lg:mt-2.5"> 24/7 Support</p>
+                      <span class="text-xs text-gray-500">Dedicated customer service</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -212,62 +227,63 @@
     </div>
     <!-- Offers  -->
     <div class="bg-gray-100 pb-10">
-        <div class="max-w-7xl relative mt-20 lg:mt-0 mx-5 lg:mx-10 lg:mx-auto">
-            <div class="grid grid-cols-4 gap-x-7">
+        <div class="max-w-7xl relative mt-5 lg:mt-0 mx-5 lg:mx-10 lg:mx-auto">
+            <div class="lg:grid grid-cols-4 gap-x-7">
                 <div class="flex flex-col gap-y-5 col-span-3">
                     <!-- Steps -->
-                    <div class="hidden sm:block sm:col-span-2 xl:col-span-3 overflow-y-visible overflow-x-hidden pt-10 pb-16">
+                    <div x-data=" {step: 'step1', inprogress: 'step1'}" class="block overflow-y-visible overflow-x-hidden pt-10 pb-16">
                         <nav class="w-full" aria-label="Progress">
-                          <ol class="flex gap-x-5 justify-center mx-auto items-center">
-                            <li class="relative w-40">
-                                <div class="absolute inset-0 left-16 flex items-center" aria-hidden="true">
-                                  <div class="h-0.5 w-28 bg-gray-300"></div>
+                          <ol class="flex gap-x-0 md:gap-x-5 justify-center mx-auto items-center">
+                            <li class="relative w-20 md:w-40 cursor-pointer">
+                                <div class="absolute inset-0 left-10 md:left-16 flex items-center" aria-hidden="true">
+                                  <div class="h-0.5 w-28 bg-gray-300" :class="{'bg-orange' : inprogress === 'step2'}"></div>
                                 </div>
-                                <a href="#" class="flex-shrink-0">
-                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'theme-border-green' : step === 'step2'}">
-                                    <span class="font-bold text-gray-400" :class="{'theme-green' : step === 'step2'}">1</span>
+                                <a class="flex-shrink-0" @click.prevent="{step = 'step1', inprogress = 'step1'}">
+                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'border-orange' : step === 'step1'}">
+                                    <span class="font-bold text-gray-400" :class="{'text-orange' : step === 'step1','border-orange' : step === 'step2'}">1</span>
                                   </span>
-                                  <span class="absolute top-12 -left-2 text-sm uppercase text-gray-400">Vehicle</span>
+                                  <span class="absolute top-12 -left-2 text-xs md:text-sm uppercase text-gray-400">Vehicle</span>
                                 </a>
                             </li>
-                            <li class="relative w-40">
-                              <div class="absolute inset-0 left-16 flex items-center" aria-hidden="true">
-                                <div class="h-0.5 w-28 bg-gray-300"></div>
+                            <li class="relative w-20 md:w-40 cursor-pointer">
+                              <div class="absolute inset-0 left-10 md:left-16 flex items-center" aria-hidden="true">
+                                <div class="h-0.5 w-28 bg-gray-300" :class="{'bg-orange' : inprogress === 'step3'}"></div>
                               </div>
-                              <a href="#" class="flex-shrink-0">
-                                <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'theme-border-green' : step === 'step2'}">
-                                  <span class="font-bold text-gray-400" :class="{'theme-green' : step === 'step2'}">2</span>
+                              <a class="flex-shrink-0" @click.prevent="{step = 'step2', inprogress = 'step2'}">
+                                <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'border-orange' : step === 'step2'}">
+                                  <span class="font-bold text-gray-400" :class="{'text-orange' : step === 'step2'}">2</span>
                                 </span>
-                                <span class="absolute top-12 -left-1.5 text-sm uppercase text-gray-400">Extras</span>
+                                <span class="absolute top-12 -left-1.5 text-xs md:text-sm uppercase text-gray-400">Extras</span>
                               </a>
                             </li>
-                            <li class="relative w-40">
-                                <div class="absolute inset-0 left-16 flex items-center" aria-hidden="true">
-                                  <div class="h-0.5 w-28 bg-gray-300"></div>
+                            <li class="relative w-20 md:w-40 cursor-pointer">
+                                <div class="absolute inset-0 left-10 md:left-16 flex items-center" aria-hidden="true">
+                                  <div class="h-0.5 w-28 bg-gray-300" :class="{'bg-orange' : inprogress === 'step4'}"></div>
                                 </div>
-                                <a href="#" class="flex-shrink-0">
-                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'theme-border-green' : step === 'step2'}">
-                                    <span class="font-bold text-gray-400" :class="{'theme-green' : step === 'step2'}">3</span>
+                                <a href="#" class="flex-shrink-0" @click.prevent="{step = 'step3', inprogress = 'step3'}">
+                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'border-orange' : step === 'step3'}">
+                                    <span class="font-bold text-gray-400" :class="{'text-orange' : step === 'step3'}">3</span>
                                   </span>
-                                  <span class="absolute top-12 -left-1.5 text-sm uppercase text-gray-400">Details</span>
+                                  <span class="absolute top-12 -left-1.5 text-xs md:text-sm uppercase text-gray-400">Details</span>
                                 </a>
                             </li>
-                            <li class="relative">
-                                <a href="#" class="flex-shrink-0">
-                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'theme-border-green' : step === 'step2'}">
-                                    <span class="font-bold text-gray-400" :class="{'theme-green' : step === 'step2'}">4</span>
+                            <li class="relative cursor-pointer">
+                                <a class="flex-shrink-0" @click.prevent="{step = 'step4', inprogress = 'step4'}">
+                                  <span class="w-10 h-10 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full" :class="{'border-orange' : step === 'step4'}">
+                                    <span class="font-bold text-gray-400" :class="{'text-orange' : step === 'step4'}">4</span>
                                   </span>
-                                  <span class="absolute top-12 -left-2.5 text-sm uppercase text-gray-400">Payment</span>
+                                  <span class="absolute top-12 -left-1.5 md:-left-2.5 text-xs md:text-sm uppercase text-gray-400">Payment</span>
                                 </a>
                             </li>
                           </ol>
                         </nav>
                     </div>
                     <!-- Offers  -->
-                    <div class="relative bg-white shadow rounded grid grid-cols-12 divide-x">
+                    <!-- Offer - 1 -->
+                    <div class="relative bg-white shadow rounded md:grid grid-cols-12 divide-y md:divide-x">
                         <!-- Offer Image -->
-                        <div class="col-span-3 flex flex-col items-center px-7 py-3">
-                            <img class="w-52" src="https://www.transfeero.com/mainjs/img/xstandard.png.pagespeed.ic.4p4MzKmIyy.webp" alt="">
+                        <div class="col-span-3 flex flex-col md:items-center px-4 md:px-7 py-3">
+                            <img class="w-52 mx-auto" src="https://www.transfeero.com/mainjs/img/xstandard.png.pagespeed.ic.4p4MzKmIyy.webp" alt="">
                             <span class="text-sm text-gray-300">Mercedes E Class or similar </span>
                             <span class="flex items-center gap-x-3">
                                 <svg class="h-5 w-5 text-gray-700" data-prefix="far" data-icon="shield" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -305,13 +321,13 @@
                                     5.0
                                 </span>
                             </ul>
-                            <span class="flex items-center w-28 -ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
+                            <span class="flex items-center w-28 lg:-ml-16 xl:-ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
                                 <svg class="h-3 w-3 text-gray-500" data-prefix="fal" data-icon="suitcase-rolling" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
                                     <path fill="currentColor" d="M336 160h-48V48c0-26.51-21.49-48-48-48h-96c-26.51 0-48 21.49-48 48v112H48c-26.51 0-48 21.49-48 48v224c0 26.51 21.49 48 48 48h16v16c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-16h128v16c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-16h16c26.51 0 48-21.49 48-48V208c0-26.51-21.49-48-48-48zM128 48c0-8.82 7.18-16 16-16h96c8.82 0 16 7.18 16 16v112H128V48zm224 384c0 8.82-7.18 16-16 16H48c-8.82 0-16-7.18-16-16V208c0-8.82 7.18-16 16-16h288c8.82 0 16 7.18 16 16v224zm-72-80H104c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8h176c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm0-96H104c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8h176c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8z"></path>
                                 </svg>
                                 <span class="text-xs font-light text-gray-500">Porter service</span>
                             </span>
-                            <span class="flex items-center w-28 mt-1 -ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
+                            <span class="flex items-center w-28 mt-1 lg:-ml-16 xl:-ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
                                 <svg class="h-3 w-3 text-gray-500" data-prefix="fal" data-icon="battery-bolt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
                                     <path fill="currentColor" d="M640 184v144c0 13.255-10.745 24-24 24h-8v16c0 26.51-21.49 48-48 48H400.69l18.028-32H560c8.823 0 16-7.177 16-16v-48h32V192h-32v-48c0-8.823-7.177-16-16-16h-90.776c-13.223-9.205-28.229-14.344-43.41-15.66l3.971-15.195c.101-.381.191-.763.287-1.145H560c26.51 0 48 21.49 48 48v16h8c13.255 0 24 10.745 24 24zM32 368V144c0-8.823 7.177-16 16-16h95.388l3.21-32H48c-26.51 0-48 21.49-48 48v224c0 26.51 21.49 48 48 48h149.734c.034-.133.063-.267.097-.4l7.71-31.6H48c-8.823 0-16-7.177-16-16zm422.616-145.511L321.664 458.482C314.042 472.12 299.81 480 284.985 480c-27.295 0-47.645-25.901-40.605-52.684L278.374 288h-56.37c-24.74 0-44.15-21.313-41.812-45.964l17.252-172C199.487 48.472 217.595 32 239.255 32h103.557c27.656 0 47.711 26.272 40.563 52.892L363.745 160h54.208c32.032 0 52.288 34.528 36.663 62.489zM417.952 192h-95.646l30.11-115.2.027-.104.028-.103c1.7-6.331-3.078-12.593-9.658-12.593H239.255a9.96 9.96 0 0 0-9.956 9.056l-.008.087-.009.087-17.24 171.881c-.523 5.829 4.089 10.89 9.96 10.89h97.117l-43.653 178.902-.067.275-.072.274c-1.723 6.555 3.374 12.548 9.656 12.548 2.842 0 6.632-1.347 8.744-5.128l.027-.048.027-.048L426.69 206.86c3.693-6.634-1.12-14.86-8.738-14.86z"></path>
                                 </svg>
@@ -320,11 +336,11 @@
                         </div>
                         <!-- Offer Details -->
                         <div class="col-span-6 px-4 py-3">
-                            <h1 class="flex items-center gap-x-2 text-3xl text-black font-medium">
+                            <h1 class="flex items-center gap-x-2 text-2xl md:text-3xl text-black font-medium">
                                 <span>Standard Class</span>
                                 <span class="text-xs font-light px-1.5 py-0.5 rounded bg-orange text-white mt-1">MOST POPULAR</span>
                             </h1>
-                            <div class="flex items-center gap-x-5">
+                            <div class="flex flex-col md:flex-row md:items-center gap-x-5">
                                 <p class="flex items-center gap-x-2">
                                     <svg class="h-6 w-6 text-orange" data-prefix="fal" data-icon="users" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
                                         <path fill="currentColor" d="M544 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zM320 256c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm0-192c44.1 0 80 35.9 80 80s-35.9 80-80 80-80-35.9-80-80 35.9-80 80-80zm244 192h-40c-15.2 0-29.3 4.8-41.1 12.9 9.4 6.4 17.9 13.9 25.4 22.4 4.9-2.1 10.2-3.3 15.7-3.3h40c24.2 0 44 21.5 44 48 0 8.8 7.2 16 16 16s16-7.2 16-16c0-44.1-34.1-80-76-80zM96 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm304.1 180c-33.4 0-41.7 12-80.1 12-38.4 0-46.7-12-80.1-12-36.3 0-71.6 16.2-92.3 46.9-12.4 18.4-19.6 40.5-19.6 64.3V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-44.8c0-23.8-7.2-45.9-19.6-64.3-20.7-30.7-56-46.9-92.3-46.9zM480 432c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-44.8c0-16.6 4.9-32.7 14.1-46.4 13.8-20.5 38.4-32.8 65.7-32.8 27.4 0 37.2 12 80.2 12s52.8-12 80.1-12c27.3 0 51.9 12.3 65.7 32.8 9.2 13.7 14.1 29.8 14.1 46.4V432zM157.1 268.9c-11.9-8.1-26-12.9-41.1-12.9H76c-41.9 0-76 35.9-76 80 0 8.8 7.2 16 16 16s16-7.2 16-16c0-26.5 19.8-48 44-48h40c5.5 0 10.8 1.2 15.7 3.3 7.5-8.5 16.1-16 25.4-22.4z"></path>
@@ -540,13 +556,13 @@
                         </div>
                         <!-- Offer Price -->
                         <div class="col-span-3 px-4 py-3">
-                          <div class="flex flex-col gap-y-1 text-right">
+                          <div class="flex flex-col gap-y-1 md:text-right">
                             <p class="text-sm">Total roundtrip price</p>
                             <p class="text-sm text-gray-400 line-through">11233.00 <small>€</small></p>
-                            <p class="text-4xl  text-red-600">500.00 <small>€</small></p>
+                            <p class="text-4xl font-bold text-red-600">500.00 <small>€</small></p>
                             <p class="text-sm text-gray-400 font-light">Each way <span> 10212.00€</span></p>
                           </div>
-                          <ul class="flex flex-col items-end gap-y-1 font-medium mt-3">
+                          <ul class="flex flex-col md:items-end gap-y-1 font-medium mt-3">
                             <li class="relative flex items-center gap-x-2">
                               <svg class="h-3.5 w-3.5 text-green-500" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><g class="fa-group">
                                 <path class="fa-secondary" fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm155.31 195.31l-184 184a16 16 0 0 1-22.62 0l-104-104a16 16 0 0 1 0-22.62l22.62-22.63a16 16 0 0 1 22.63 0L216 308.12l150.06-150.06a16 16 0 0 1 22.63 0l22.62 22.63a16 16 0 0 1 0 22.62z"></path>
@@ -570,10 +586,11 @@
                           </button>
                         </div>
                     </div>
-                    <div class="relative bg-white shadow rounded grid grid-cols-12 divide-x">
+                    <!-- Offer - 2 -->
+                    <div class="relative bg-white shadow rounded md:grid grid-cols-12 divide-y md:divide-x">
                       <!-- Offer Image -->
-                      <div class="col-span-3 flex flex-col items-center px-7 py-3">
-                          <img class="w-52" src="https://www.transfeero.com/mainjs/img/xstandard.png.pagespeed.ic.4p4MzKmIyy.webp" alt="">
+                      <div class="col-span-3 flex flex-col md:items-center px-4 md:px-7 py-3">
+                          <img class="w-52 mx-auto" src="https://www.transfeero.com/mainjs/img/xstandard.png.pagespeed.ic.4p4MzKmIyy.webp" alt="">
                           <span class="text-sm text-gray-300">Mercedes E Class or similar </span>
                           <span class="flex items-center gap-x-3">
                               <svg class="h-5 w-5 text-gray-700" data-prefix="far" data-icon="shield" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -611,13 +628,13 @@
                                   5.0
                               </span>
                           </ul>
-                          <span class="flex items-center w-28 -ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
+                          <span class="flex items-center w-28 lg:-ml-16 xl:-ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
                               <svg class="h-3 w-3 text-gray-500" data-prefix="fal" data-icon="suitcase-rolling" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg="">
                                   <path fill="currentColor" d="M336 160h-48V48c0-26.51-21.49-48-48-48h-96c-26.51 0-48 21.49-48 48v112H48c-26.51 0-48 21.49-48 48v224c0 26.51 21.49 48 48 48h16v16c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-16h128v16c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-16h16c26.51 0 48-21.49 48-48V208c0-26.51-21.49-48-48-48zM128 48c0-8.82 7.18-16 16-16h96c8.82 0 16 7.18 16 16v112H128V48zm224 384c0 8.82-7.18 16-16 16H48c-8.82 0-16-7.18-16-16V208c0-8.82 7.18-16 16-16h288c8.82 0 16 7.18 16 16v224zm-72-80H104c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8h176c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm0-96H104c-4.42 0-8 3.58-8 8v16c0 4.42 3.58 8 8 8h176c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8z"></path>
                               </svg>
                               <span class="text-xs font-light text-gray-500">Porter service</span>
                           </span>
-                          <span class="flex items-center w-28 mt-1 -ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
+                          <span class="flex items-center w-28 mt-1 lg:-ml-16 xl:-ml-20 gap-x-1 px-1.5 py-0.5 rounded bg-gray-100">
                               <svg class="h-3 w-3 text-gray-500" data-prefix="fal" data-icon="battery-bolt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
                                   <path fill="currentColor" d="M640 184v144c0 13.255-10.745 24-24 24h-8v16c0 26.51-21.49 48-48 48H400.69l18.028-32H560c8.823 0 16-7.177 16-16v-48h32V192h-32v-48c0-8.823-7.177-16-16-16h-90.776c-13.223-9.205-28.229-14.344-43.41-15.66l3.971-15.195c.101-.381.191-.763.287-1.145H560c26.51 0 48 21.49 48 48v16h8c13.255 0 24 10.745 24 24zM32 368V144c0-8.823 7.177-16 16-16h95.388l3.21-32H48c-26.51 0-48 21.49-48 48v224c0 26.51 21.49 48 48 48h149.734c.034-.133.063-.267.097-.4l7.71-31.6H48c-8.823 0-16-7.177-16-16zm422.616-145.511L321.664 458.482C314.042 472.12 299.81 480 284.985 480c-27.295 0-47.645-25.901-40.605-52.684L278.374 288h-56.37c-24.74 0-44.15-21.313-41.812-45.964l17.252-172C199.487 48.472 217.595 32 239.255 32h103.557c27.656 0 47.711 26.272 40.563 52.892L363.745 160h54.208c32.032 0 52.288 34.528 36.663 62.489zM417.952 192h-95.646l30.11-115.2.027-.104.028-.103c1.7-6.331-3.078-12.593-9.658-12.593H239.255a9.96 9.96 0 0 0-9.956 9.056l-.008.087-.009.087-17.24 171.881c-.523 5.829 4.089 10.89 9.96 10.89h97.117l-43.653 178.902-.067.275-.072.274c-1.723 6.555 3.374 12.548 9.656 12.548 2.842 0 6.632-1.347 8.744-5.128l.027-.048.027-.048L426.69 206.86c3.693-6.634-1.12-14.86-8.738-14.86z"></path>
                               </svg>
@@ -626,11 +643,11 @@
                       </div>
                       <!-- Offer Details -->
                       <div class="col-span-6 px-4 py-3">
-                          <h1 class="flex items-center gap-x-2 text-3xl text-black font-medium">
+                          <h1 class="flex items-center gap-x-2 text-2xl md:text-3xl text-black font-medium">
                               <span>Standard Class</span>
                               <span class="text-xs font-light px-1.5 py-0.5 rounded bg-orange text-white mt-1">MOST POPULAR</span>
                           </h1>
-                          <div class="flex items-center gap-x-5">
+                          <div class="flex flex-col md:flex-row md:items-center gap-x-5">
                               <p class="flex items-center gap-x-2">
                                   <svg class="h-6 w-6 text-orange" data-prefix="fal" data-icon="users" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg="">
                                       <path fill="currentColor" d="M544 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zM320 256c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm0-192c44.1 0 80 35.9 80 80s-35.9 80-80 80-80-35.9-80-80 35.9-80 80-80zm244 192h-40c-15.2 0-29.3 4.8-41.1 12.9 9.4 6.4 17.9 13.9 25.4 22.4 4.9-2.1 10.2-3.3 15.7-3.3h40c24.2 0 44 21.5 44 48 0 8.8 7.2 16 16 16s16-7.2 16-16c0-44.1-34.1-80-76-80zM96 224c44.2 0 80-35.8 80-80s-35.8-80-80-80-80 35.8-80 80 35.8 80 80 80zm0-128c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zm304.1 180c-33.4 0-41.7 12-80.1 12-38.4 0-46.7-12-80.1-12-36.3 0-71.6 16.2-92.3 46.9-12.4 18.4-19.6 40.5-19.6 64.3V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-44.8c0-23.8-7.2-45.9-19.6-64.3-20.7-30.7-56-46.9-92.3-46.9zM480 432c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16v-44.8c0-16.6 4.9-32.7 14.1-46.4 13.8-20.5 38.4-32.8 65.7-32.8 27.4 0 37.2 12 80.2 12s52.8-12 80.1-12c27.3 0 51.9 12.3 65.7 32.8 9.2 13.7 14.1 29.8 14.1 46.4V432zM157.1 268.9c-11.9-8.1-26-12.9-41.1-12.9H76c-41.9 0-76 35.9-76 80 0 8.8 7.2 16 16 16s16-7.2 16-16c0-26.5 19.8-48 44-48h40c5.5 0 10.8 1.2 15.7 3.3 7.5-8.5 16.1-16 25.4-22.4z"></path>
@@ -846,13 +863,13 @@
                       </div>
                       <!-- Offer Price -->
                       <div class="col-span-3 px-4 py-3">
-                        <div class="flex flex-col gap-y-1 text-right">
+                        <div class="flex flex-col gap-y-1 md:text-right">
                           <p class="text-sm">Total roundtrip price</p>
                           <p class="text-sm text-gray-400 line-through">11233.00 <small>€</small></p>
-                          <p class="text-4xl  text-red-600">500.00 <small>€</small></p>
+                          <p class="text-4xl font-bold text-red-600">500.00 <small>€</small></p>
                           <p class="text-sm text-gray-400 font-light">Each way <span> 10212.00€</span></p>
                         </div>
-                        <ul class="flex flex-col items-end gap-y-1 font-medium mt-3">
+                        <ul class="flex flex-col md:items-end gap-y-1 font-medium mt-3">
                           <li class="relative flex items-center gap-x-2">
                             <svg class="h-3.5 w-3.5 text-green-500" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="check-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><g class="fa-group">
                               <path class="fa-secondary" fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm155.31 195.31l-184 184a16 16 0 0 1-22.62 0l-104-104a16 16 0 0 1 0-22.62l22.62-22.63a16 16 0 0 1 22.63 0L216 308.12l150.06-150.06a16 16 0 0 1 22.63 0l22.62 22.63a16 16 0 0 1 0 22.62z"></path>
@@ -875,7 +892,7 @@
                           </svg>
                         </button>
                       </div>
-                    </div>
+                  </div>
                 </div>
                 <div class="flex flex-col gap-y-5 col-span-1 mt-10">
                     <div class="bg-white rounded flex flex-col shadow px-4 py-4">
@@ -1039,7 +1056,7 @@
                     </div>
                     <!-- Map  -->
                     <div class="bg-white rounded flex flex-col shadow">
-                      <div class="mx-auto h-80">
+                      <div class="w-full mx-auto h-80">
                         <div class="h-full">
                           <iframe class="w-full h-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2171.6994547934178!2d3.209764085081492!3d51.033165554142066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c348c3dee8cb51%3A0xb762633e5df9dda6!2sKoolskampstraat%2013%2C%208750%20Wingene%2C%20Belgium!5e0!3m2!1sen!2s!4v1615675646298!5m2!1sen!2s" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
@@ -1272,5 +1289,40 @@
         </p>
       </div>
     </div>
+
+    
+   
+    <!-- SLIDERS  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        if (window.matchMedia("(max-width: 768px)").matches) {
+        /* the viewport is less than 768 pixels wide */
+        $('.services-slider').slick({
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            arrows: false,
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                }
+              },
+              {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+              }
+            ]
+          });
+        } 
+    </script>
 </body>
 </html>
