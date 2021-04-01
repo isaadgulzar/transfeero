@@ -178,12 +178,12 @@
     <!-- Services -->
     <div class="max-w-7xl relative mt-5 lg:mt-1 mx-5 lg:mx-10 lg:mx-auto">
         <div class="py-2 bg-white">
-          <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-            <div class="services-slider lg:grid lg:grid-cols-4 justify-center items-center lg:gap-10">
-              <div class="col-span-1">
-                <div class="flex w-full items-center gap-x-2">
+          <div class="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-1">
+            <div class="services-slider lg:grid lg:grid-cols-4 justify-center items-center lg:gap-x-10">
+              <div class="col-span-1 focus:outline-none">
+                <div class="flex w-full h-24 justify-center lg:justify-start items-center gap-x-2">
                     <div>
-                        <img class="h-20 w-20" src="https://www.transfeero.com/mainjs/svg/free_cancellation.svg" alt="">
+                        <img class="h-16 w-20" src="https://www.transfeero.com/mainjs/svg/free_cancellation.svg" alt="">
                     </div>
                     <div>
                         <p class="text-lg text-gray-900 lg:mt-2.5"> Free cancellation</p>
@@ -191,19 +191,19 @@
                     </div>
                 </div>
               </div>
-              <div class="col-span-1">
-                <div class="flex w-full items-center gap-x-5 ml-4 lg:ml-0">
+              <div class="col-span-1 focus:outline-none">
+                <div class="flex w-full h-24 justify-center lg:justify-start items-center gap-x-2">
                   <div>
-                      <img class="h-12 w-12" src="https://www.transfeero.com/mainjs/svg/flight_tracking.svg" alt="">
+                      <img class="h-12 w-20" src="https://www.transfeero.com/mainjs/svg/flight_tracking.svg" alt="">
                   </div>
                   <div>
-                      <p class="text-lg text-gray-900 lg:mt-1"> Flight tracking</p>
+                      <p class="text-lg text-gray-900 lg:mt-2.5"> Flight tracking</p>
                       <span class="text-xs text-gray-500">Driver will monitor your flight</span>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1">
-                <div class="flex items-center gap-x-2 -mt-1.5">
+              <div class="col-span-1 focus:outline-none">
+                <div class="flex w-full h-24 justify-center lg:justify-start items-center gap-x-2 ml-1">
                   <div>
                       <img class="h-16 w-20" src="https://www.transfeero.com/mainjs/svg/professional_drivers.svg" alt="">
                   </div>
@@ -213,10 +213,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-span-1">
-                <div class="flex items-center gap-x-2 -mt-1.5">
+              <div class="col-span-1 focus:outline-none">
+                <div class="flex w-full h-24 justify-center lg:justify-start items-center gap-x-2">
                   <div>
-                      <img class="h-16 w-16" src="https://www.transfeero.com/mainjs/svg/customer_service.svg" alt="">
+                      <img class="h-16 w-20" src="https://www.transfeero.com/mainjs/svg/customer_service.svg" alt="">
                   </div>
                   <div>
                       <p class="text-lg text-gray-900 lg:mt-2.5"> 24/7 Support</p>
@@ -1565,21 +1565,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-        if (window.matchMedia("(max-width: 768px)").matches) {
-        /* the viewport is less than 768 pixels wide */
         $('.services-slider').slick({
             slidesToShow: 4,
             slidesToScroll: 4,
             arrows: false,
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 2000,
             responsive: [
               {
                 breakpoint: 1024,
                 settings: {
                   slidesToShow: 2,
                   slidesToScroll: 1,
+                  infinite: true,
+                  autoplay: true,
+                  autoplaySpeed: 2000,
                 }
               },
               {
@@ -1587,11 +1585,13 @@
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    infinite: true,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
                 }
               }
             ]
           });
-        } 
     </script>
 </body>
 </html>
