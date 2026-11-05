@@ -131,10 +131,10 @@
     <!-- Navbar  -->
     <header class="bg-white py-2 lg:py-8 shadow" x-data="{ navOpen : false}">
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 justify-between flex items-center">
-        <div class="flex items-center">
-            <img class="block h-7 w-auto" src="https://www.transfeero.com/wp-content/themes/understrap-master/q.svg">
+        <a href="./index.html" class="flex items-center" aria-label="Transfeero home">
+            <img class="block h-7 w-auto" src="https://www.transfeero.com/wp-content/themes/understrap-master/q.svg" alt="">
             <span class="text-2xl font-bold">TRANSFEERO</span>
-        </div>
+        </a>
         <button class="lg:hidden inline-flex text-black outline-none focus:outline-none" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <svg id="openNavIcon" x-show="!navOpen" @click="navOpen = true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -147,10 +147,10 @@
         </button>
         <nav class="hidden lg:flex gap-x-5" aria-label="Global">
             <div class="lg:flex justify-end lg:space-x-8">
-            <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold border-b-2 border-orange">
+            <a href="./index.html" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold border-b-2 border-orange">
                 Airport Taxi   
             </a>
-            <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
+            <a href="./index.html" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
                 City rides
             </a>
             <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
@@ -163,10 +163,10 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <nav x-show="navOpen" class="lg:hidden px-2" aria-label="Global">
         <div class="flex justify-center lg:space-x-8">
-            <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold border-b-2 border-orange">
+            <a href="./index.html" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold border-b-2 border-orange">
             Airport Taxi   
             </a>
-            <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
+            <a href="./index.html" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
             City rides
             </a>
             <a href="#" class="text-gray-800 pt-2 pb-0.5 px-3 inline-flex items-center text-xl font-semibold">
@@ -368,7 +368,7 @@
                                 <span class="text-sm text-gray-400" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Meet &amp; Greet included</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -382,7 +382,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Free Waiting time</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -396,7 +396,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Door-to-door</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -409,7 +409,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-green-500">Safe and secure travel</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-green-500">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                                   
@@ -448,7 +448,7 @@
                                           <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
                                         </svg>
                                         <span class="inline text-xs font-bold text-black mt-0.5">
-                                          Vehicle may differ from image : <span class="font-normal text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, alias commodi. Suscipit explicabo quibusdam sit illum! Veritatis placeat eaque aut asperiores, recusandae et, quo illo at, culpa nam id nobis? </span>
+                                          Vehicle may differ from image : <span class="font-normal text-gray-600">The assigned vehicle will match the selected class and passenger capacity; its make, model, and color may vary. </span>
                                         </span>
                                       </li>
                                     </ul>
@@ -588,7 +588,7 @@
                               <span class="text-sm text-gray-400" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Meet &amp; Greet included</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -602,7 +602,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Free Waiting time</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -616,7 +616,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Door-to-door</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -629,7 +629,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-green-500">Safe and secure travel</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-green-500">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                                 
@@ -668,7 +668,7 @@
                                         <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
                                       </svg>
                                       <span class="inline text-xs font-bold text-black mt-0.5">
-                                        Vehicle may differ from image : <span class="font-normal text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, alias commodi. Suscipit explicabo quibusdam sit illum! Veritatis placeat eaque aut asperiores, recusandae et, quo illo at, culpa nam id nobis? </span>
+                                        Vehicle may differ from image : <span class="font-normal text-gray-600">The assigned vehicle will match the selected class and passenger capacity; its make, model, and color may vary. </span>
                                       </span>
                                     </li>
                                   </ul>
@@ -808,7 +808,7 @@
                               <span class="text-sm text-gray-400" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Meet &amp; Greet included</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -822,7 +822,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Free Waiting time</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -836,7 +836,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Door-to-door</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                             </li>
@@ -849,7 +849,7 @@
                               <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-green-500">Safe and secure travel</span>
                               <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-green-500">
                                 <span class="text-xs text-white p-1">
-                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                  A comfortable private ride with a professional local driver.
                                 </span>
                               </div>
                                 
@@ -888,7 +888,7 @@
                                         <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
                                       </svg>
                                       <span class="inline text-xs font-bold text-black mt-0.5">
-                                        Vehicle may differ from image : <span class="font-normal text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, alias commodi. Suscipit explicabo quibusdam sit illum! Veritatis placeat eaque aut asperiores, recusandae et, quo illo at, culpa nam id nobis? </span>
+                                        Vehicle may differ from image : <span class="font-normal text-gray-600">The assigned vehicle will match the selected class and passenger capacity; its make, model, and color may vary. </span>
                                       </span>
                                     </li>
                                   </ul>
@@ -1028,7 +1028,7 @@
                                 <span class="text-sm text-gray-400" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Meet &amp; Greet included</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -1042,7 +1042,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Free Waiting time</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -1056,7 +1056,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-gray-400">Door-to-door</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-orange">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                               </li>
@@ -1069,7 +1069,7 @@
                                 <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="text-sm text-green-500">Safe and secure travel</span>
                                 <div x-cloak x-show.transition.origin.top="tooltip" class="flex absolute z-10 top-5 left-0 rounded w-52 bg-green-500">
                                   <span class="text-xs text-white p-1">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit labore beatae.  
+                                    A comfortable private ride with a professional local driver.
                                   </span>
                                 </div>
                                   
@@ -1108,7 +1108,7 @@
                                         <path fill="currentColor" d="M256 56c110.532 0 200 89.451 200 200 0 110.532-89.451 200-200 200-110.532 0-200-89.451-200-200 0-110.532 89.451-200 200-200m0-48C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 168c-44.183 0-80 35.817-80 80s35.817 80 80 80 80-35.817 80-80-35.817-80-80-80z"></path>
                                       </svg>
                                       <span class="inline text-xs font-bold text-black mt-0.5">
-                                        Vehicle may differ from image : <span class="font-normal text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, alias commodi. Suscipit explicabo quibusdam sit illum! Veritatis placeat eaque aut asperiores, recusandae et, quo illo at, culpa nam id nobis? </span>
+                                        Vehicle may differ from image : <span class="font-normal text-gray-600">The assigned vehicle will match the selected class and passenger capacity; its make, model, and color may vary. </span>
                                       </span>
                                     </li>
                                   </ul>
@@ -1503,7 +1503,7 @@
               <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">Airport Transfers</a></li>
               <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">City-to-city Rides</a></li>
               <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">Business Solutions</a></li>
-              <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">Manage your booking</a></li>
+              <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="./bookings.html">Manage your booking</a></li>
               <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">Terms & Conditions</a></li>
               <li><a class="text-gray-100 text-xs text-gray-100 hover:text-yellow-500" href="#">Help Centre</a></li>
             </ul>
